@@ -1,0 +1,416 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML>
+	<HEAD>
+        <TITLE>B.O.B.'s SMR Tools</TITLE>
+        <META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+        <META http-equiv=pragma content=no-cache>
+
+        <STYLE>
+        
+            <!--
+            
+                BODY
+                {
+                    PADDING-RIGHT: 10px;
+                    PADDING-LEFT: 10px;
+                    SCROLLBAR-FACE-COLOR: #06240e;
+                    BACKGROUND: #0b2121;
+                    PADDING-BOTTOM: 10px;
+                    MARGIN: 0px;
+                    SCROLLBAR-HIGHLIGHT-COLOR: #0b2121;
+                    SCROLLBAR-SHADOW-COLOR: #0b8d35;
+                    COLOR: white;
+                    SCROLLBAR-3DLIGHT-COLOR: #0b8d35;
+                    SCROLLBAR-ARROW-COLOR: #0b8d35;
+                    PADDING-TOP: 10px;
+                    SCROLLBAR-TRACK-COLOR: #0b2121;
+                    FONT-FAMILY: Arial;
+                    SCROLLBAR-DARKSHADOW-COLOR: #0b2121;
+                    FONT-VARIANT: normal;
+                }
+
+                HR
+                {
+                    COLOR: #80c870;
+                    HEIGHT: 2px;
+                    BACKGROUND-COLOR: #a0f890;
+                    noshade: line;
+                }
+
+                TABLE.standard
+                {
+                    BORDER-RIGHT: #0b8d35 1px solid;
+                    BORDER-TOP: #0b8d35 1px solid;
+                    BORDER-LEFT: #0b8d35 1px solid;
+                    BORDER-BOTTOM: #0b8d35 1px solid;
+                }
+                TABLE.standard TD
+                {
+                    BORDER-RIGHT: #0b8d35 1px solid;
+                    BORDER-TOP: #0b8d35 1px solid;
+                    BORDER-LEFT: #0b8d35 1px solid;
+                    BORDER-BOTTOM: #0b8d35 1px solid;
+                }
+                TABLE.standard TH
+                {
+                    BORDER-RIGHT: #0b8d35 1px solid;
+                    BORDER-TOP: #0b8d35 1px solid;
+                    BORDER-LEFT: #0b8d35 1px solid;
+                    BORDER-BOTTOM: #0b8d35 1px solid;
+                }
+                TABLE.nobord
+                {
+                    BORDER-TOP-STYLE: none;
+                    BORDER-RIGHT-STYLE: none;
+                    BORDER-LEFT-STYLE: none;
+                    BORDER-BOTTOM-STYLE: none;
+                }
+                TABLE.nobord TD
+                {
+                    BORDER-TOP-STYLE: none;
+                    BORDER-RIGHT-STYLE: none;
+                    BORDER-LEFT-STYLE: none;
+                    BORDER-BOTTOM-STYLE: none;
+                }
+
+                TD
+                {
+                    COLOR: white;
+                    FONT-FAMILY: Arial;
+                    FONT-VARIANT: normal;
+                }
+                TH
+                {
+                    BACKGROUND: #0a4e1d;
+                    COLOR: #80c870;
+                }
+
+                H1
+                {
+                    FONT-WEIGHT: bold;
+                    FONT-SIZE: 12pt;
+                    COLOR: #80c870;
+                    FONT-FAMILY: Arial;
+                }
+                H2
+                {
+                    FONT-WEIGHT: bold;
+                    FONT-SIZE: 10pt;
+                    COLOR: #80c870;
+                    FONT-FAMILY: Arial;
+                }
+                H3
+                {
+                    COLOR: fuchsia;
+                }
+
+                A:active
+                {
+                    COLOR: white;
+                    TEXT-DECORATION: none;
+                }
+                A:hover
+                {
+                    BACKGROUND: #0a4e1d;
+                    COLOR: white;
+                    TEXT-DECORATION: none;
+                }
+                A:link
+                {
+                    COLOR: white;
+                    TEXT-DECORATION: none;
+                }
+                A:visited
+                {
+                    COLOR: white;
+                    TEXT-DECORATION: none;
+                }
+
+                #InputFields
+                {
+                    BORDER-RIGHT: #80c870 1px solid;
+                    BORDER-TOP: #80c870 1px solid;
+                    BACKGROUND: #06240e;
+                    BORDER-LEFT: #80c870 1px solid;
+                    COLOR: #ffffff;
+                    BORDER-BOTTOM: #80c870 1px solid;
+                    FONT-FAMILY: Arial;
+                    HEIGHT: 20px;
+                }
+                #InputFieldsText
+                {
+                    BORDER-RIGHT: #80c870 1px solid;
+                    BORDER-TOP: #80c870 1px solid;
+                    BACKGROUND: #06240e;
+                    BORDER-LEFT: #80c870 1px solid;
+                    COLOR: #ffffff;
+                    BORDER-BOTTOM: #80c870 1px solid;
+                    FONT-FAMILY: Arial;
+                }
+                #help_content
+                {
+                    MARGIN: 10px 20px 50px;
+                }
+                #help_menu
+                {
+                    MARGIN: 10px;
+                }
+
+                FORM
+                {
+                    MARGIN: 0px;
+                }
+
+                A.sector
+                {
+                    DISPLAY: block;
+                    WIDTH: 100%;
+                    CURSOR: pointer;
+                    HEIGHT: 100%;
+                }
+                A.sector:hover
+                {
+                    BACKGROUND: #005000;
+                    TEXT-DECORATION: none;
+                }
+                A.warp_sector
+                {
+                    DISPLAY: block;
+                    WIDTH: 100%;
+                    CURSOR: pointer;
+                    HEIGHT: 100%;
+                }
+                A.warp_sector:hover
+                {
+                    BACKGROUND: #500000;
+                    TEXT-DECORATION: none;
+                }
+                A.scan_btn
+                {
+                    BORDER-RIGHT: #8070c8 1px solid;
+                    PADDING-RIGHT: 2px;
+                    BORDER-TOP: #8070c8 1px solid;
+                    PADDING-LEFT: 2px;
+                    FONT-WEIGHT: bold;
+                    FONT-SIZE: 0.7em;
+                    BACKGROUND: #060e88;
+                    PADDING-BOTTOM: 0px;
+                    MARGIN: 2px;
+                    BORDER-LEFT: #8070c8 1px solid;
+                    COLOR: #bbbbbb;
+                    PADDING-TOP: 0px;
+                    BORDER-BOTTOM: #8070c8 1px solid;
+                    TEXT-ALIGN: center;
+                    TEXT-DECORATION: none;
+                }
+                A.scan_btn:hover
+                {
+                    BACKGROUND: #060e88;
+                    COLOR: #ffffff;
+                }
+                TD.sector
+                {
+                    PADDING-RIGHT: 0px;
+                    PADDING-LEFT: 0px;
+                    PADDING-BOTTOM: 0px;
+                    WIDTH: 4.5em;
+                    PADDING-TOP: 0px;
+                    HEIGHT: 3.5em;
+                    TEXT-ALIGN: center;
+                }
+
+                IMG
+                {
+                    BORDER-TOP-STYLE: none;
+                    BORDER-RIGHT-STYLE: none;
+                    BORDER-LEFT-STYLE: none;
+                    BORDER-BOTTOM-STYLE: none;
+                }
+                IMG.vote_site
+                {
+                    WIDTH: 98px;
+                    HEIGHT: 41px;
+                }
+
+                DIV.bar1
+                {
+                    BORDER-RIGHT: #0b8d35 1px solid;
+                    PADDING-RIGHT: 5px;
+                    BORDER-TOP: #0b8d35 1px solid;
+                    PADDING-LEFT: 5px;
+                    PADDING-BOTTOM: 5px;
+                    BORDER-LEFT: #0b8d35 1px solid;
+                    PADDING-TOP: 5px;
+                    BORDER-BOTTOM: #0b8d35 1px solid;
+                }
+                DIV.bar1 DIV
+                {
+                    PADDING-RIGHT: 2px;
+                    PADDING-LEFT: 2px;
+                    PADDING-BOTTOM: 2px;
+                    PADDING-TOP: 2px;
+                    BACKGROUND-COLOR: #0b8d35;
+                    TEXT-ALIGN: center;
+                }
+
+                TD.left_panel
+                {
+                    PADDING-RIGHT: 10px;
+                    PADDING-LEFT: 0px;
+                    PADDING-BOTTOM: 0px;
+                    VERTICAL-ALIGN: top;
+                    WIDTH: 7em;
+                    PADDING-TOP: 0px;
+                    TEXT-ALIGN: right;
+                }
+                TD.main
+                {
+                    BORDER-RIGHT: #0b8d35 1px solid;
+                    PADDING-RIGHT: 10px;
+                    BORDER-TOP: #0b8d35 1px solid;
+                    PADDING-LEFT: 10px;
+                    PADDING-BOTTOM: 10px;
+                    BORDER-LEFT: #0b8d35 1px solid;
+                    PADDING-TOP: 10px;
+                    BORDER-BOTTOM: #0b8d35 1px;
+                    BACKGROUND-COLOR: #06240e;
+                }
+                TD.right_panel
+                {
+                    PADDING-LEFT: 10px;
+                    VERTICAL-ALIGN: top;
+                    WIDTH: 10em;
+                    TEXT-ALIGN: left;
+                }
+                TD.footer_left
+                {
+                    BORDER-RIGHT: #0b8d35 1px;
+                    PADDING-RIGHT: 10px;
+                    BORDER-TOP: #0b8d35 1px;
+                    PADDING-LEFT: 10px;
+                    FONT-SIZE: 75%;
+                    PADDING-BOTTOM: 10px;
+                    VERTICAL-ALIGN: bottom;
+                    BORDER-LEFT: #0b8d35 1px solid;
+                    PADDING-TOP: 10px;
+                    BORDER-BOTTOM: #0b8d35 1px solid;
+                    BACKGROUND-COLOR: #06240e;
+                    TEXT-ALIGN: left;
+                }
+                TD.footer_right
+                {
+                    BORDER-RIGHT: #0b8d35 1px solid;
+                    PADDING-RIGHT: 10px;
+                    BORDER-TOP: #0b8d35 1px;
+                    PADDING-LEFT: 10px;
+                    FONT-SIZE: 75%;
+                    PADDING-BOTTOM: 10px;
+                    BORDER-LEFT: #0b8d35 1px;
+                    PADDING-TOP: 10px;
+                    BORDER-BOTTOM: #0b8d35 1px solid;
+                    BACKGROUND-COLOR: #06240e;
+                    TEXT-ALIGN: right;
+                    http: //beta.smrealms.de/login.php;
+                    vertical-align: bottom;
+                }
+
+                DIV.attack_warning
+                {
+                    BORDER-RIGHT: #bbbb00 1px solid;
+                    PADDING-RIGHT: 0px;
+                    BORDER-TOP: #bbbb00 1px solid;
+                    PADDING-LEFT: 0px;
+                    FONT-WEIGHT: bold;
+                    PADDING-BOTTOM: 0px;
+                    MARGIN: 0px;
+                    BORDER-LEFT: #bbbb00 1px solid;
+                    PADDING-TOP: 0px;
+                    BORDER-BOTTOM: #bbbb00 1px solid;
+                    BACKGROUND-COLOR: #550000;
+                    TEXT-ALIGN: center;
+                }
+            
+            -->
+            
+        </STYLE>
+
+        <SCRIPT LANGUAGE="JAVASCRIPT">
+        
+            // <!-- Quick! Hide the java!
+
+            // Speaking of Java, this particular script is (C) Copyright 2002 Jim Tucek
+            // If you wish to use my CountDown script, these comments must be left
+            // alone!  That is all.
+
+            // Visit www.jracademy.com/~jtucek/ for script information and a bit of help
+            // setting it up, or www.jracademy.com/~jtucek/email.html for contact
+            // information.
+
+            // function start()
+            // {
+            //		setup(document.forms["form1"].time2.value,"form1");
+            //		setup(document.forms["form2"].time2.value,"form2");
+            //		setup(document.forms["form3"].time2.value,"form3");
+            //		repeat()
+            // }
+
+            // start();
+
+            // function repeat()
+            // {
+            //		down("form1");
+            //		down("form2");
+            //		down("form3");
+            //		setTimeout("repeat()",1000);
+            // }
+
+            function setup(day,box)
+            {
+                today = {{MS_TIMESTAMP}};
+                the_day = day;
+                time = (the_day - today);
+                document.forms[box].time2.value=time;
+            }
+
+            function down(box)
+            {
+                document.forms[box].time2.value = document.forms[box].time2.value - 1000;
+                time = document.forms[box].time2.value;
+                days = (time - (time % 86400000)) / 86400000;
+                time = time - (days * 86400000);
+                hours = (time - (time % 3600000)) / 3600000;
+                time = time - (hours * 3600000);
+                mins = (time - (time % 60000)) / 60000;
+                time = time - (mins * 60000);
+                secs = (time - (time % 1000)) / 1000;
+                if(days==1) out = "1 day, ";
+                else out = days+" days, ";
+                if(hours < 10) out = out+"0";
+                out = out+hours+":";
+                if(mins < 10) out = out+"0";
+                out = out+mins+":";
+                if(secs < 10) out = out+"0";
+                out = out+secs;
+                if(days+hours+mins+secs> 1) document.forms[box].time.value = out;
+                else document.forms[box].time.value = ("Build Done");
+            }
+            
+            // I'm back! -->
+            
+        </SCRIPT>
+    </HEAD>
+    <BODY>
+        <TABLE style="WIDTH: 100%; HEIGHT: 100%" cellSpacing=0 cellPadding=0>
+            <TBODY>
+                <TR>
+                    <TD class=main vAlign=top align=left colSpan=2>
+                        <table cellspacing="0" cellpadding="3" border="0" class="standard" width="99%">
+                            <tr>
+                                <th>Sector (Galaxy)</th>
+                                <th>Building</th>
+                                <th>Shields (Needed)</th>
+                                <th>CDs (Needed)</th>
+                                <th>Goods (Needed)</th>
+                                <th>Time to Lvl 70</th>
+                                <th>Credits (Builds Only)</th>
+                            </tr>

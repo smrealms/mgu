@@ -1,0 +1,44 @@
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.App.ico
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.Sector.resources
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.About.resources
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\Verlinea.ComboBoxTree.ComboBoxTree.resources
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.ForceManager.resources
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.LocationDisplay.resources
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.MainStuff.resources
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.NewUniverse.resources
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.TradeCalc.resources
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.OptimalRoute.resources
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\ToolbarControl.PictureBar.resources
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.PlotWindow.resources
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.SectorConfig.resources
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.Stocker.resources
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.RouteFinder.resources
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\Merchants Guide to the Universe.csproj.GenerateResource.Cache
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\bin\MGU.exe
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\bin\MGU.pdb
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.Properties.Resources.resources
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.exe
+C:\Documents and Settings\Thomas Langerak\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.pdb
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.exe
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.pdb
+C:\Users\user\Desktop\Merchants Guide to the Universe\bin\MGU.exe
+C:\Users\user\Desktop\Merchants Guide to the Universe\bin\MGU.pdb
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.App.ico
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.Sector.resources
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.About.resources
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\Verlinea.ComboBoxTree.ComboBoxTree.resources
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.ForceManager.resources
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.LocationDisplay.resources
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.MainStuff.resources
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.NewUniverse.resources
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.TradeCalc.resources
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.OptimalRoute.resources
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\ToolbarControl.PictureBar.resources
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.PlotWindow.resources
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.SectorConfig.resources
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.Stocker.resources
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.RouteFinder.resources
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\MGU.Properties.Resources.resources
+C:\Users\user\Desktop\Merchants Guide to the Universe\obj\Debug\Merchants Guide to the Universe.csproj.GenerateResource.Cache

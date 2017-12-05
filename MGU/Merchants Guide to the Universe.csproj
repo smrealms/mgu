@@ -1,0 +1,254 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{743DBCC2-63BB-4F96-9A90-DFF110A58497}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>MGU</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MGU</RootNamespace>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>
+    </DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>
+    </DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>1</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\ForceData.cs" />
+    <Compile Include="Classes\Galaxy.cs">
+    </Compile>
+    <Compile Include="Classes\Game.cs" />
+    <Compile Include="Classes\Good.cs" />
+    <Compile Include="Classes\Location.cs" />
+    <Compile Include="Classes\Planet.cs" />
+    <Compile Include="Classes\Port.cs" />
+    <Compile Include="Classes\Race.cs" />
+    <Compile Include="Classes\Sector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Classes\Ship.cs" />
+    <Compile Include="Classes\Ship_shop.cs" />
+    <Compile Include="Classes\SMR16.cs" />
+    <Compile Include="Classes\Tech.cs" />
+    <Compile Include="Classes\Tech_shop.cs" />
+    <Compile Include="Classes\Weapon_shop.cs" />
+    <Compile Include="Controls\CustomBorderForm.cs" />
+    <Compile Include="Controls\DrawUtil.cs" />
+    <Compile Include="Controls\FormStyle.cs" />
+    <Compile Include="Forms\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ComboBoxTree.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Classes\IniReader.cs" />
+    <Compile Include="Forms\ForceManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LocationDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainStuff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewUniverse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TradeCalc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OptimalRoute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\PictureBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\PlotWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SectorConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Stocker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RouteFinder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\FormWithNonClientArea.cs" />
+    <Compile Include="Controls\LonghornForm.cs" />
+    <Compile Include="Controls\MyProfessionalColorTable.cs" />
+    <Compile Include="Controls\NativeMethods.cs" />
+    <Compile Include="Classes\Item.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Weapon.cs" />
+    <Compile Include="Classes\Route.cs" />
+    <EmbeddedResource Include="Classes\Sector.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Sector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App.ico" />
+    <EmbeddedResource Include="Controls\ComboBoxTree.resx">
+      <DependentUpon>ComboBoxTree.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ForceManager.resx">
+      <DependentUpon>ForceManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LocationDisplay.resx">
+      <DependentUpon>LocationDisplay.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainStuff.resx">
+      <DependentUpon>MainStuff.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewUniverse.resx">
+      <DependentUpon>NewUniverse.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TradeCalc.resx">
+      <DependentUpon>TradeCalc.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OptimalRoute.resx">
+      <DependentUpon>OptimalRoute.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\PictureBar.resx">
+      <DependentUpon>PictureBar.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlotWindow.resx">
+      <DependentUpon>PlotWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SectorConfig.resx">
+      <DependentUpon>SectorConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Stocker.resx">
+      <DependentUpon>Stocker.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RouteFinder.resx">
+      <DependentUpon>RouteFinder.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="Resources\Border.png" />
+    <Content Include="Resources\Close.png" />
+    <Content Include="Resources\CloseDisabled.png" />
+    <Content Include="Resources\CloseHot.png" />
+    <Content Include="Resources\ClosePressed.png" />
+    <Content Include="Resources\favicon.ico" />
+    <Content Include="Resources\header.html" />
+    <Content Include="Resources\Maximize.png" />
+    <Content Include="Resources\MaximizeDisabled.png" />
+    <Content Include="Resources\MaximizeHot.png" />
+    <Content Include="Resources\MaximizePressed.png" />
+    <Content Include="Resources\Minimize.png" />
+    <Content Include="Resources\MinimizeDisabled.png" />
+    <Content Include="Resources\MinimizeHot.png" />
+    <Content Include="Resources\MinimizePressed.png" />
+    <Content Include="Resources\miningInstructions.htm" />
+    <Content Include="Resources\planetbuildingInstructions.htm" />
+    <Content Include="Resources\Restore.png" />
+    <Content Include="Resources\RestoreDisabled.png" />
+    <Content Include="Resources\RestoreHot.png" />
+    <Content Include="Resources\RestorePressed.png" />
+    <Content Include="smc.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

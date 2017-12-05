@@ -1,0 +1,826 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML>
+	<HEAD>
+        <TITLE>B.O.B.'s SMR Tools</TITLE>
+        <META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+        <META http-equiv=pragma content=no-cache>
+
+        <STYLE>
+        
+            <!--
+            
+body,html {
+	height:100%;
+}
+
+body {
+	background:#0B2121;
+	font-family: Arial, sans-serif;
+	font-variant:normal;
+	margin:0px;
+	padding:0px;
+	margin-top:10px;
+	color:#ffffff;
+}
+
+
+
+H1 {
+	color : #80C870;
+	font-size : 125%;
+	font-family: Arial, sans-serif;
+	font-weight:bold;
+	padding:0px;
+	margin:0px;
+}
+
+H2 {
+	color : #80C870;
+	font-size : 110%;
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+	padding:0px;
+	margin:0px;
+}
+
+H3 {
+	color : Fuchsia;
+	padding:0px;
+	margin:0px;
+}
+
+TH {
+	background : #0A4E1D;
+	color : #80C870;
+	text-align:center;
+}
+
+#InputFields {
+	background : #06240E;
+	color : #FFFFFF;
+	border : 1px solid #80C870;
+	font-family: Arial;
+	font-size:inherit;
+
+}
+
+#InputFieldsText {
+	background : #06240E;
+	color : #FFFFFF;
+	border : 1px solid #80C870;
+	font-family: Arial;
+	font-size:inherit;
+
+}
+
+#help_content {
+	margin-bottom : 50px;
+	margin-left : 20px;
+	margin-right : 20px;
+	margin-top : 10px;
+}
+
+#help_menu {
+	margin-bottom : 10px;
+	margin-left : 10px;
+	margin-right : 10px;
+	margin-top : 10px;
+
+}
+
+form {
+	margin: 0px;
+}
+
+
+
+a.scan_btn {
+	background : #060e88;
+	border : 1px solid #8070c8;
+	font-weight:bold;
+	font-size: 80%;
+	padding:0.1em 0.5em 0.1em 0.5em;
+	text-align:center;
+	color:#bbbbbb;
+	position:relative;
+	top:-1.6em;
+}
+a.scan_btn:HOVER {
+	background : #060e88;
+	color:#ffffff;
+}
+
+td.sector {
+	padding:0px;
+	height:3.5em;
+	width:4.5em;
+	text-align:center;
+}
+
+img {
+	border: none;
+}
+
+img.vote_site {
+	width:98px;
+	height:41px;
+}
+
+
+
+big {
+	font-size:125%;
+}
+
+small {
+	font-size:75%;
+}
+
+div.attack_warning {
+	text-align:center;
+	border:1px solid #bbbb00;
+	background-color:#550000;
+	font-weight:bold;
+	color:#ff0000;
+	padding:0px;
+	margin:0px;
+}
+
+/* */
+
+table {
+	font-size:100%;
+}
+
+.auto {
+	width:auto;
+}
+.shrink {
+	width:1%;
+}
+
+td {
+	padding:3px;
+	text-align:left;
+	color:#ffffff;
+	font-family: Arial, sans-serif;
+	font-variant:normal;
+	vertical-align:middle;
+}
+
+.top {
+	vertical-align:top;
+}
+
+.blank {
+	margin:0px;
+	padding:0px;
+}
+
+.nowrap {
+	white-space:nowrap;
+}
+
+td.footer_left {
+	padding:10px;
+	border:1px solid #0b8d35;
+	background-color:#06240e;
+	border-top:none;
+	border-right:none;
+	vertical-align:bottom;
+	text-align:left;
+	font-size:75%;
+	white-space:nowrap;
+}
+
+td.footer_right {
+	padding:10px;
+	border:1px solid #0b8d35;
+	background-color:#06240e;
+	border-top:none;
+	border-left:none;
+	vertical-align:bottom;
+	text-align:right;
+	font-size:75%;
+	font-family: Arial, sans-serif;
+	white-space:nowrap;
+}
+
+table.standard {
+	border:1px solid #0b8d35;
+}
+
+.standard td,th{
+	border:1px solid #0b8d35;
+}
+table.quote {
+	border:1px solid #0b8d35;
+	cellspacing:0px;
+	cellpadding:1px;
+}
+th{
+	padding:3px;
+	font-size:110%;
+}
+
+.inset {
+	width:95%;
+}
+
+.fullwidth{
+	width:100%;
+}
+
+table.nobord td{
+	border:none;
+}
+
+table.nohpad td{
+	padding-left:0px;
+	padding-right:0px;
+	margin:0px;
+}
+
+.right {
+	text-align:right;
+}
+
+.center {
+	text-align:center;
+}
+
+td.button {
+	padding:0px;
+	text-align:center;
+	width:1%;
+	white-space:nowrap;
+	vertical-align:middle;
+}
+
+div.bar1 {
+	border:1px solid #0B8D35;padding:5px;
+}
+
+div.bar1 div {
+	padding:2px;background-color:#0B8D35;text-align:center;
+}
+
+input {
+	background : #06240E;
+	color : #FFFFFF;
+	border : 1px solid #80C870;
+	font-family: Arial;
+	font-size:100%;
+}
+
+textarea{
+	background : #06240E;
+	color : #FFFFFF;
+	border : 1px solid #80C870;
+	font-family: Arial;
+	font-size:100%;
+	width:30em;
+	height:15em;
+}
+
+a{
+	color:#ffffff;
+	text-decoration:none;
+	padding:0px;
+	margin:0px;
+}
+
+a:hover {
+	background:#0A4E1D;
+}
+
+a.header {
+	color:#80C870;
+}
+
+.yellow {
+	color:#ffff00;
+}
+
+.red {
+	color:#ff0000;
+}
+
+.green {
+	color:#00ff00;
+}
+
+.cyan {
+	color:#00ffff;
+}
+
+.blue {
+	color:#0000ff;
+}
+
+.bold {
+	font-weight:bold;
+}
+.italic {
+	font-style:italic;
+}
+.smallCaps {
+	font-variant:small-caps;
+}
+hr {
+ 	color:#80C870;
+	background-color:#A0F890;
+	height:2px;
+}
+
+img.alliance {
+}
+
+div.buttonA {
+	margin: 0px;
+	font-size:100%;
+	height: 1.0em;
+	display:inline;
+}
+
+a.buttonA  {
+	font-size: inherit;
+	text-decoration: none;
+	height: 1.0em;
+	display:inline;
+	border-width: 2px;
+	background-color: #0B8D35;
+	border-style: solid;
+	color:#ffffff;
+	border-bottom-color: #2a6e2a;
+	border-right-color: #2a6e2a;
+	border-left-color: #a3cca3;
+	border-top-color: #a3cca3;
+	white-space:nowrap;
+}
+
+a.buttonA:hover {
+	background-color: #0B8D35;
+}
+
+a.buttonA:active {
+	background-color: #0B8D35;
+	border-bottom-color: #a3cca3;
+	border-right-color: #a3cca3;
+	border-left-color: #2a6e2a;
+	border-top-color: #2a6e2a;
+}
+
+/***************************/
+table.m {
+	width:100%;
+	height:95%;
+}
+td.l0 {
+	padding:0px;
+	vertical-align:top;
+}
+td.mb {
+	width:225px;
+}
+div.l1 {
+	padding-right:10px;
+}
+div.l2 {
+	text-align:right;
+	width:9em;
+}
+td.m0 {
+	padding:0px;
+	border:1px solid #0b8d35;
+	background-color:#06240e;
+	border-bottom:none;
+	vertical-align:top;
+}
+div.m1 {
+	padding:10px;
+}
+div.m2 {
+	text-align:left;
+}
+td.r0 {
+	padding:0px;
+	vertical-align:top;
+}
+div.r1 {
+	padding-left:10px;
+}
+div.r1 {
+	text-align:left;
+	width:0.5em;
+}
+
+
+div.lm {
+	width:610px;
+	height:610px;
+	position:relative;
+	top:0px;
+	left:0px;
+	border:1px solid #0b8d35;
+}
+
+div.lms {
+	background-color:#00000;
+	height:120px;
+	width:120px;
+	line-height:120px;
+	position:absolute;
+	border:1px solid #0b8d35;
+	overflow:hidden;
+	color:#ffff00;
+	font-weight:bold;
+}
+
+div.lmsv {
+	background-color:#0B4C1C;
+	height:120px;
+	width:120px;
+	line-height:120px;
+	position:absolute;
+	border:1px solid #0b8d35;
+	overflow:hidden;
+	color:#00ff00;
+	font-weight:bold;
+}
+
+div.lmsa {
+	background-color:#14642F;
+	height:120px;
+	width:120px;
+	line-height:120px;
+	position:absolute;
+	border:1px solid #0b8d35;
+	overflow:hidden;
+}
+
+div.lmsc {
+	height:120px;
+	width:120px;
+	line-height:120px;
+	position:absolute;
+	border:1px solid #0b8d35;
+	overflow:hidden;
+	font-weight:bold;
+}
+
+div.lmpf{
+	width:32px;
+	position:absolute;
+	top:9px;
+	left:78px;
+	text-align:right
+}
+
+div.lmpw{
+	width:32px;
+	position:absolute;
+	top:9px;
+	left:9px;
+	text-align:left
+}
+
+div.lmp {
+	text-align:left;
+	line-height:1.0em;
+	position:absolute;
+	top:75px;
+	left:6px;
+}
+
+div.lml {
+	width:110px;
+	line-height:1.0em;
+	position:absolute;
+	top:26px;
+	left:6px
+}
+
+img.lmll {
+	position:absolute;
+	top:53px;
+	left:2px
+}
+
+img.lmlt {
+	position:absolute;
+	top:2px;
+	left:53px
+}
+
+img.lmlr {
+	position:absolute;
+	top:53px;
+	left:113px
+}
+
+img.lmlb {
+	position:absolute;
+	top:113px;
+	left:53px
+}
+
+a.lmsa {
+	display:block;
+	height:100%;
+	width:100%;
+	font-weight:bold;
+	cursor:pointer;
+}
+a.lmsa:HOVER {
+	background:#14645F;
+}
+
+a.lmsc {
+	display:block;
+	height:100%;
+	width:100%;
+	font-weight:bold;
+	cursor:pointer;
+	background: url('images/currentsector.png');
+	color:#00ff00;
+}
+a.lmsc:HOVER {
+	background: url('images/currentsector_hover.png');
+}
+
+/***********************/
+
+div.cssv {
+	height:4em;
+	width:1.5em;
+	line-height:1.0em;
+	text-align:center;
+	background-color: #060e88;
+}
+
+div.cssh {
+	height:1.5em;
+	width:4em;
+	line-height:1.5em;
+	text-align:center;
+	background-color: #060e88;
+}
+
+div.css {
+	height:4em;
+	width:4em;
+	line-height:4em;
+	text-align:center
+}
+
+table.csmv {
+	border:none;
+}
+
+.csmv td{
+	padding:0px;
+	border:1px solid #0b8d35;
+}
+
+table.csmvw {
+	position:absolute;
+	top:11em;
+	left:11em;
+	border:1px solid #0b8d35;
+}
+
+.csmvw td{
+	padding:0px;
+	border:1px solid #0b8d35;
+}
+
+table.csmvwns {
+	position:absolute;
+	top:9.3em;
+	left:9.3em;
+	border:1px solid #0b8d35;
+}
+
+.csmvwns td{
+	padding:0px;
+	border:1px solid #0b8d35;
+}
+
+table.csl {
+	width:27em;
+}
+
+
+td.csr1c1 {
+	padding:0px;
+	border-left:none;
+	border-top:none;
+}
+
+td.csr1c2 {
+	padding:0px;
+	border-top:2px solid #0b8d35
+}
+td.csr1c3 {
+	padding:0px;
+	border-right:none;
+	border-top:none;
+}
+
+td.csr3c1 {
+	padding:0px;
+	vertical-align:top;
+	border-left:2px solid #0b8d35
+}
+
+td.csr3c5 {
+	padding:0px;
+	vertical-align:top;
+	border-right:2px solid #0b8d35
+}
+
+td.csr4c1 {
+	padding:0px;
+	border-left:none;
+	border-bottom:none
+}
+
+td.csr4c3 {
+	padding:0px;
+	border-right:none;
+	border-bottom:none
+}
+
+td.csr5c1 {
+	padding:0px;
+	border-bottom:2px solid #0b8d35
+}
+
+a.cssc {
+	background: #060e88;
+	font-size: 80%;
+	display:block;
+	height:100%;
+	width:100%;
+	font-weight:bold;
+	cursor:pointer;
+	color:#bbbbbb;
+}
+
+a.cssc:hover {
+	background: #060e88;
+	color:#ffffff;
+}
+
+
+a.css {
+	display:block;
+	height:100%;
+	width:100%;
+	font-weight:bold;
+	cursor:pointer;
+}
+
+a.css:hover {
+	background: #005000;
+}
+
+a.csw {
+	display:block;
+	height:100%;
+	width:100%;
+	font-weight:bold;
+	cursor:pointer;
+
+}
+a.csw:hover {
+	background: #500000;
+}
+
+.dgreen {
+	color:#00bb00;
+}
+
+.blue {
+	color:#0000ff;
+}
+
+.nopad {
+	margin:0px;
+	padding:0px;
+}
+
+            
+            -->
+            
+        </STYLE>
+    </HEAD>
+    <BODY>
+        <table align="center" cellspacing="0" cellpadding="0" class="m">
+            <tr>
+                <td rowspan="2" class="l0"><div class="l1"><!-- <div class="l2"></div> --></div></td>
+                <td colspan="2" class="m0">
+                    <div class="m1">
+                        <div class="m2">
+                            <big><big><b><a href="http://www.smrealms.de/" target="_blank">http://www.smrealms.de/</a></b></big></big>
+                            <br />
+                            <br />
+                            <h1>Instructions:</h1>
+                            <ol>
+                                <li style="color: Green;">Open your webbrowser and goto <a href="http://www.smrealms.de/" target="_blank"><b>www.smrealms.de</b></a></li>
+                                <li>Log into the game.</li>
+                                <li style="color: Green;">Enter the current game running.</li>
+                                <li>Open your Alliance page.</li>
+                                <li style="color: Green;">Open your Alliance roster page.</li>
+                                <li>On your keyboard, click Ctrl+A, and then Ctrl+C to copy your alliance roster.</li>
+                                <li style="color: Green;">On the "Traders Name" tab in this program, hit Ctrl+V to paste your alliance roster.</li>
+                                <li>Return to your Alliance roster page, and click the Alliance Forces link.</li>
+                                <li style="color: Green;">
+                                    On the Alliance Forces page, do the same thing as the Roster (Copy & Paste the Forces page to the 
+                                    Forces tab in this program.
+                                </li>
+                                <li>
+                                    On the "Sectors" tab in this program, it uses the MGU galaxy interface.  Navigate in MGU interface
+                                    to your Alliance's claimed galaxy.  This program can handle multiple nrofgals, and if you would like
+                                    to check around the warp outside of your galaxy, simply switch to that galaxy, and click the desired
+                                    sectors.  The program will remember what sectors you have selected in each galaxy.
+                                </li>
+                                <li style="color: Green;">
+                                    If you want to check all the sectors in the galaxy, simply click the Select All button. Otherwise,
+                                    click each sector you want to check and it will turn from Green to Red.  To deselect a sector, simply
+                                    click the sector again, and it will go back to Green.
+                                </li>
+                                <li>
+                                    Open the "Seeds Report" tab.  This tab will give you a list of sectors checked, and a report of who
+                                    is missing seeds.  The Seeds Report is specifically designed to let you know what Alliance mates are 
+                                    missing seeds.  There two types of reports:  Normal & OP-A
+                                    <ul>
+                                        <li style="color: Green;">
+                                            OP-A is a report specifically designed for an IRC bot created by RCK.  For more info on this,
+                                            please contact RCK.
+                                        </li>
+                                    </ul>
+                                    If you would like to copy this report to your Alliance Message Board, simply hit Ctrl+C on your keyboard.
+                                    (You do not need to select the text from the report, the program knows what tab you are on, and
+                                    automatically copies the desired report.
+                                </li>
+                                <li style="color: Green;">
+                                    Open the "Stacks Report" tab.  This report is specifically designed for Miners.  It will let the miner
+                                    know what sizes of stacks are in a sector.  This will allow a miner to know what sectors need to be 
+                                    filled.  If you would like to copy this report to your Alliance Message Board, simply hit Ctrl+C on 
+                                    your keyboard.  (You do not need to select the text from the report, the program knows what tab you are 
+                                    on, and automatically copies the desired report.
+                                </li>
+                                <li>
+                                    Open the "Sectors Report" tab.  The Sectors Report was specifically designed to give an idea of your
+                                    overall strength of your minefield.  There two types of reports:  Normal & OP-A
+                                    <ul>
+                                        <li style="color: Green;">
+                                            OP-A is a report specifically designed for an IRC bot created by RCK.  For more info on this,
+                                            please contact RCK.
+                                        </li>
+                                    </ul>
+                                    If you would like to copy this report to your Alliance Message Board, simply hit Ctrl+C on your keyboard.
+                                    (You do not need to select the text from the report, the program knows what tab you are on, and
+                                    automatically copies the desired report.
+                                </li>
+                                <li style="color: Green;">
+                                    Open the "Plot Refresh" tab.  This tab will attempt to find the most optimized route to refresh/seed
+                                    with, based on a start sector.  You can personalize the route based on where you are at, or you can
+                                    input your galaxy warp for a more generic route to share with your alliance.  There is a "# of variant
+                                    paths to check" list.
+                                    <br />
+                                    <span style="color: White;">
+                                        While trying to find the best route, the program will check the path from sector A, to sector B,
+                                        C, D, X, Y, and Z.  In this scenario, both sector X & Z are adjacent to sector A.  So the program will then
+                                        check the distance of X to B, C, Y, and Z; and also the distance of Z to B, C, D, X and Y.
+                                        This is to try and find from the two choices (X & Z), what would result in the shortest route after
+                                        that.  This scenario will play out countless times until all possible combinations have been tested.
+                                        However, when checking say a 6x6 planet galaxy, compared to a 8x8 planet galaxy, the all possible
+                                        combinations grow exponentially.  Due to this, checking all possible combinations could take a very
+                                        long time, and tie up your CPU.
+                                    </span>
+                                    <br />
+                                    To fix this problem, the program lets you specify how many paths to check.  Checking 1,000 paths is 
+                                    relatively quick on most PCs, but in most cases will not yield the absolute best route to use.  The
+                                    program allows you to specify how many combinations you wish to check if you desire to get as close
+                                    to the best route as possible within a reason amount of processing time.
+                                    <br />
+                                    <span style="color: White;">
+                                        Having said that, run a plot of more than 25,000 variants at your own risk.
+                                    </span>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </TD>
+                <td rowspan="2" class="r0"><div class="r1"><div class="r2"></div></div></td>
+            </TR>
+            <tr>
+                <td class="footer_left">&nbsp;</td>
+                <td class="footer_right">&nbsp;</td>
+            </tr>
+        </TABLE>
+    </BODY>
+</HTML>
