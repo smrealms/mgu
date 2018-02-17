@@ -11,8 +11,10 @@ namespace MGU
     class SMR16
     {
         #region Reading and Writing of SMR files
-        public static bool LoadData(string SMRFile, Game currentGame)
+        public static Game LoadData(MainStuff hostApp, string SMRFile)
         {
+            Game currentGame = new Game(hostApp, hostApp.GameIcons, hostApp.LocationIcons);
+
             string[] sectors;
             TextReader additionaldata;
             bool addloaded = false;
@@ -27,7 +29,7 @@ namespace MGU
             }
             catch (System.IO.IOException)
             {
-                return false;
+                return null;
             }
             TextReader data = new StreamReader(fs);
 
@@ -41,7 +43,7 @@ namespace MGU
                 }
                 catch (System.IO.IOException)
                 {
-                    return false;
+                    return null;
                 }
 
                 additionaldata = new StreamReader(fsa);
@@ -55,12 +57,12 @@ namespace MGU
             //Check if the file is an SMR file and check the version
             string fileheader = data.ReadLine();
             if(fileheader == null)
-                return false;
+                return null;
 
             if (!fileheader.StartsWith(";SMR1.6 Sectors File v", StringComparison.InvariantCultureIgnoreCase))
             {
                 MessageBox.Show("This file is not a SMR file", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return false;
+                return null;
             }
 
             currentGame.address = SMRFile;
@@ -775,7 +777,7 @@ namespace MGU
                 fsa.Close();
                 additionaldata.Close();
             }
-            return true;
+            return currentGame;
         }
 
         public static bool SaveData(string SMRFile, Game currentGame)

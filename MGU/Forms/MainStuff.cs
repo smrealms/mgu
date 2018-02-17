@@ -18,6 +18,7 @@
 using System;
 using System.Drawing;
 using System.Collections;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.Win32;
@@ -40,9 +41,11 @@ namespace MGU
 
         //This variable contains the index of the currently loaded game
         public int currentGame;
+        public Game currentSelectedGame;
 
         //This variable contains a list of all games
-        public Game[] games = new Game[5];
+        public List<Game> games = new List<Game>();
+        //public Game[] games = new Game[5];
         public int nrofgames = 0;
 
         //This variable contains the string representation of the address of the current program.
@@ -72,74 +75,130 @@ namespace MGU
 
         public MainStuff()
         {
-            string nextline;
-            string[] lineparts;
-
             //First initialize all GUI components
             InitializeComponent();
 
-            for(int x =0; x < 5; x++)
-                games[x] = new Game(this, Cons, Locs);
+            System.Collections.Specialized.StringCollection mapPaths = Properties.Settings.Default.LoadedMaps;
 
-            //Load the startup file if it exists
-            if (File.Exists(Directory.GetCurrentDirectory() + @"\startup.txt"))
-            {
-                FileStream fs = new FileStream(Directory.GetCurrentDirectory() + @"\startup.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
-                StreamReader reader = new StreamReader(fs);
-                nextline = reader.ReadLine();
-                char[] delim = { '=' };
-                lineparts = nextline.Split(delim, StringSplitOptions.RemoveEmptyEntries);
-                while (lineparts[0].StartsWith("LoadedMap") && lineparts[1] != " ")
+            //if (mapPaths != null)
+            //{
+                foreach (string gamePath in Properties.Settings.Default.LoadedMaps)
                 {
-                    if (SMR16.LoadData(lineparts[1], games[nrofgames]))
+                    if (!String.IsNullOrWhiteSpace(gamePath))
                     {
-                        currentGame = nrofgames;
-                        games[currentGame].address = lineparts[1];
-                        nrofgames++;
+                        Game newGame = SMR16.LoadData(this, gamePath);
+                        if (newGame != null)
+                        {
+                            int currentIndex = games.Count;
 
-                        MenuItem GameItem = new System.Windows.Forms.MenuItem();
-                        GameItem.Index = nrofgames - 1;
-                        GameItem.Text = games[currentGame].game_name;
-                        GameItem.RadioCheck = true;
-                        GameItem.Click += new System.EventHandler(this.ChangeGame);
-                        contextMenu0.MenuItems.Add(GameItem);
+                            MenuItem GameItem = new System.Windows.Forms.MenuItem();
+                            GameItem.Index = currentIndex;
+                            GameItem.Text = newGame.game_name;
+                            GameItem.RadioCheck = true;
+                            GameItem.Click += new System.EventHandler(this.ChangeGame);
+                            contextMenu0.MenuItems.Add(GameItem);
 
-                        toolBarButton0.Text = games[currentGame].game_name;
+                            toolBarButton0.Text = newGame.game_name;
 
-                        if (nrofgames >= 2)
-                            for (int g = 0; g < games[currentGame - 1].nrofgalaxies; g++)
-                                for (int x = 0; x < games[currentGame - 1].galaxy[g].galaxy_xsize; x++)
-                                    for (int y = 0; y < games[currentGame - 1].galaxy[g].galaxy_ysize; y++)
+                            for (int g = 0; g < newGame.nrofgalaxies; g++)
+                            {
+                                for (int x = 0; x < newGame.galaxy[g].galaxy_xsize; x++)
+                                {
+                                    for (int y = 0; y < newGame.galaxy[g].galaxy_ysize; y++)
                                     {
-                                        games[currentGame - 1].galaxy[g].sector[x, y].Parent = null;
-                                        games[currentGame - 1].galaxy[g].sector[x, y].Visible = false;
+                                        newGame.galaxy[g].sector[x, y].Parent = panel1;
+                                        newGame.galaxy[g].sector[x, y].Visible = false;
                                     }
+                                }
+                            }
 
-                        //This is where we set panel1 as the parent control of all sector objects, so that the OnPaint message of panle1 gets passed on to all sectors.
-                        for (int g = 0; g < games[currentGame].nrofgalaxies; g++)
-                            for (int x = 0; x < games[currentGame].galaxy[g].galaxy_xsize; x++)
-                                for (int y = 0; y < games[currentGame].galaxy[g].galaxy_ysize; y++)
-                                    games[currentGame].galaxy[g].sector[x, y].Parent = panel1;
+                            currentSelectedGame = newGame;
 
-                        //Add the galaxies to the menu
-                        AddGalaxies();
-                        Redraw();
+                            //Add the galaxies to the menu
+                            AddGalaxies();
+                            Redraw();
 
-                        goLeftButton.Enabled = goRightButton.Enabled = goDownButton.Enabled = goUpButton.Enabled = toolBarButton1.Enabled = toolBarButton2.Enabled = toolBarButton3.Enabled = toolBarButton5.Enabled = this.toolBarButton6.Enabled = this.toolBarButton7.Enabled = this.toolBarButton8.Enabled = this.toolBarButton1.Enabled = true;
+                            games.Add(newGame);
+                            
+                        }
                     }
+                //}
+            }
+
+            // If no map was loaded
+            if(currentSelectedGame == null)
+            {
+                //Set all buttons to disable
+                toolBarButton0.Enabled = false;
+                toolBarButton1.Enabled = false;
+                toolBarButton2.Enabled = false;
+                toolBarButton3.Enabled = false;
+                toolBarButton5.Enabled = false;
+                toolBarButton6.Enabled = false;
+                toolBarButton7.Enabled = false;
+                toolBarButton8.Enabled = false;
+                toolBarButton9.Enabled = false;
+                SaveUniverse.Enabled = CloseUniverse.Enabled = false;
+            }
+
+            /*
+            //Load the startup file if it exists
+            if (File.Exists(address))
+            {
+                using(StreamReader reader = new StreamReader(address)) {
+                    if (reader.EndOfStream) return;
                     nextline = reader.ReadLine();
+                    char[] delim = { '=' };
                     lineparts = nextline.Split(delim, StringSplitOptions.RemoveEmptyEntries);
+                    while (lineparts[0].StartsWith("LoadedMap") && lineparts[1] != " ")
+                    {
+                        if (SMR16.LoadData(lineparts[1], games[nrofgames]))
+                        {
+                            currentGame = nrofgames;
+                            currentSelectedGame.address = lineparts[1];
+                            nrofgames++;
+
+                            MenuItem GameItem = new System.Windows.Forms.MenuItem();
+                            GameItem.Index = nrofgames - 1;
+                            GameItem.Text = currentSelectedGame.game_name;
+                            GameItem.RadioCheck = true;
+                            GameItem.Click += new System.EventHandler(this.ChangeGame);
+                            contextMenu0.MenuItems.Add(GameItem);
+
+                            toolBarButton0.Text = currentSelectedGame.game_name;
+
+                            if (nrofgames >= 2)
+                                for (int g = 0; g < games[currentGame - 1].nrofgalaxies; g++)
+                                    for (int x = 0; x < games[currentGame - 1].galaxy[g].galaxy_xsize; x++)
+                                        for (int y = 0; y < games[currentGame - 1].galaxy[g].galaxy_ysize; y++)
+                                        {
+                                            games[currentGame - 1].galaxy[g].sector[x, y].Parent = null;
+                                            games[currentGame - 1].galaxy[g].sector[x, y].Visible = false;
+                                        }
+
+                            //This is where we set panel1 as the parent control of all sector objects, so that the OnPaint message of panle1 gets passed on to all sectors.
+                            for (int g = 0; g < currentSelectedGame.nrofgalaxies; g++)
+                                for (int x = 0; x < currentSelectedGame.galaxy[g].galaxy_xsize; x++)
+                                    for (int y = 0; y < currentSelectedGame.galaxy[g].galaxy_ysize; y++)
+                                        currentSelectedGame.galaxy[g].sector[x, y].Parent = panel1;
+
+                            //Add the galaxies to the menu
+                            AddGalaxies();
+                            Redraw();
+
+                            goLeftButton.Enabled = goRightButton.Enabled = goDownButton.Enabled = goUpButton.Enabled = toolBarButton1.Enabled = toolBarButton2.Enabled = toolBarButton3.Enabled = toolBarButton5.Enabled = this.toolBarButton6.Enabled = this.toolBarButton7.Enabled = this.toolBarButton8.Enabled = this.toolBarButton1.Enabled = true;
+                        }
+                        nextline = reader.ReadLine();
+                        lineparts = nextline.Split(delim, StringSplitOptions.RemoveEmptyEntries);
+                    }
+
+                    if (lineparts[0].StartsWith("Style"))
+                        this.displaystyle = Convert.ToInt16(lineparts[1]);
+
+                    nextline = reader.ReadLine();
+                    if (reader.EndOfStream)
+                        return;
                 }
-
-                if (lineparts[0].StartsWith("Style"))
-                    this.displaystyle = Convert.ToInt16(lineparts[1]);
-                
-                nextline = reader.ReadLine();
-                if (reader.EndOfStream)
-                    return;
-
-                reader.Close();
-                fs.Close();
             }
             else
             {
@@ -155,6 +214,8 @@ namespace MGU
                 toolBarButton9.Enabled = false;
                 SaveUniverse.Enabled = CloseUniverse.Enabled = false;
             }
+
+            */
         }
 
         #region Windows Form Designer generated code
@@ -218,36 +279,7 @@ namespace MGU
 		private System.Windows.Forms.MenuItem[] GalaxyItems;
 
 		protected override void Dispose( bool disposing )
-		{
-            FileStream fs;
-            string address = Directory.GetCurrentDirectory() + @"\startup.txt";
-
-            try
-            {
-                fs = new FileStream(address, FileMode.Create, FileAccess.Write, FileShare.Read);
-            }
-            catch (IOException)
-            {
-                if (disposing)
-                {
-                    if (components != null)
-                    {
-                        components.Dispose();
-                    }
-                }
-                base.Dispose(disposing);
-                return;
-            }
-
-            StreamWriter writer = new StreamWriter(fs);
-
-            for(int g = 1; g < nrofgames+1; g++)
-                writer.WriteLine("LoadedMap = " + games[g].address);
-            writer.WriteLine("Style = " + displaystyle.ToString());
-
-            writer.Close();
-            fs.Close();
-
+		{  
 			if( disposing )
 			{
 				if(components != null)
@@ -827,6 +859,7 @@ namespace MGU
             this.MinimumSize = new System.Drawing.Size(784, 86);
             this.Name = "MainStuff";
             this.Text = "Merchants Guide to the Universe Version 1.6.1.8";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainStuff_FormClosing);
             this.Load += new System.EventHandler(this.MainStuff_Load);
             this.SizeChanged += new System.EventHandler(this.DoResize);
             this.panel1.ResumeLayout(false);
@@ -843,33 +876,33 @@ namespace MGU
         
 		private void goLeftButton_Click(object sender, System.EventArgs e)
 		{
-            games[currentGame].galaxy[games[currentGame].currentGalaxy].startsector -= 1;
-            if (games[currentGame].galaxy[games[currentGame].currentGalaxy].startsector - games[currentGame].galaxy[games[currentGame].currentGalaxy].lowestsectorid + 1 % games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_xsize == 0)
-                games[currentGame].galaxy[games[currentGame].currentGalaxy].startsector += games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_xsize;
+            currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].startsector -= 1;
+            if (currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].startsector - currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].lowestsectorid + 1 % currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_xsize == 0)
+                currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].startsector += currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_xsize;
             Redraw();
 		}
 
 		private void goDownButton_Click(object sender, System.EventArgs e)
 		{
-            games[currentGame].galaxy[games[currentGame].currentGalaxy].startsector += games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_xsize;
-            if (games[currentGame].galaxy[games[currentGame].currentGalaxy].startsector > games[currentGame].galaxy[games[currentGame].currentGalaxy].lowestsectorid + games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_xsize * games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_ysize)
-                games[currentGame].galaxy[games[currentGame].currentGalaxy].startsector -= games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_xsize * games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_ysize;
+            currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].startsector += currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_xsize;
+            if (currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].startsector > currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].lowestsectorid + currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_xsize * currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_ysize)
+                currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].startsector -= currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_xsize * currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_ysize;
             Redraw();
 		}
 
 		private void goRightButton_Click(object sender, System.EventArgs e)
 		{
-            games[currentGame].galaxy[games[currentGame].currentGalaxy].startsector += 1;
-            if (games[currentGame].galaxy[games[currentGame].currentGalaxy].startsector % games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_xsize == 1)
-                games[currentGame].galaxy[games[currentGame].currentGalaxy].startsector -= games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_xsize;
+            currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].startsector += 1;
+            if (currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].startsector % currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_xsize == 1)
+                currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].startsector -= currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_xsize;
             Redraw();
 		}
 
 		private void goUpButton_Click(object sender, System.EventArgs e)
 		{
-            games[currentGame].galaxy[games[currentGame].currentGalaxy].startsector -= games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_xsize;
-            if (games[currentGame].galaxy[games[currentGame].currentGalaxy].startsector < games[currentGame].galaxy[games[currentGame].currentGalaxy].lowestsectorid)
-                games[currentGame].galaxy[games[currentGame].currentGalaxy].startsector += games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_xsize * games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_ysize;
+            currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].startsector -= currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_xsize;
+            if (currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].startsector < currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].lowestsectorid)
+                currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].startsector += currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_xsize * currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_ysize;
             Redraw();
 		}
 
@@ -886,7 +919,7 @@ namespace MGU
         {
 			if (e.Button == toolBarButton1)
 			{
-                games[currentGame].displayIllegals = e.Button.Pushed;
+                currentSelectedGame.displayIllegals = e.Button.Pushed;
                 Redraw();
 			}
 
@@ -912,16 +945,16 @@ namespace MGU
 		private void ChangeGalaxy(object sender, System.EventArgs e)
         //This function is invoked when the user changes the galaxy to be viewed
 		{
-            games[currentGame].currentGalaxy = ((MenuItem)sender).Index + 1;
-            toolBarButton2.Text = games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_name;
+            currentSelectedGame.currentGalaxy = ((MenuItem)sender).Index + 1;
+            toolBarButton2.Text = currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_name;
 			Redraw();
 		}
 
         public void ChangeGalaxy(int newIndex)
         //This function changes the currently displayed galaxy to that with the given index
         {
-            games[currentGame].currentGalaxy = newIndex;
-            toolBarButton2.Text = games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_name;
+            currentSelectedGame.currentGalaxy = newIndex;
+            toolBarButton2.Text = currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_name;
             Redraw();
         }
 
@@ -931,7 +964,7 @@ namespace MGU
             int previousgame = currentGame;
 
             currentGame = ((MenuItem)sender).Index+1;
-            toolBarButton0.Text = games[currentGame].game_name;
+            toolBarButton0.Text = currentSelectedGame.game_name;
             if (nrofgames >= 2)
                 for (int g = 0; g < games[previousgame].nrofgalaxies; g++)
                     for (int x = 0; x < games[previousgame].galaxy[g].galaxy_xsize; x++)
@@ -942,10 +975,10 @@ namespace MGU
                         }
 
             //This is where we set panel1 as the parent control of all sector objects, so that the OnPaint message of panle1 gets passed on to all sectors.
-            for (int g = 0; g < games[currentGame].nrofgalaxies; g++)
-                for (int x = 0; x < games[currentGame].galaxy[g].galaxy_xsize; x++)
-                    for (int y = 0; y < games[currentGame].galaxy[g].galaxy_ysize; y++)
-                        games[currentGame].galaxy[g].sector[x, y].Parent = panel1;
+            for (int g = 0; g < currentSelectedGame.nrofgalaxies; g++)
+                for (int x = 0; x < currentSelectedGame.galaxy[g].galaxy_xsize; x++)
+                    for (int y = 0; y < currentSelectedGame.galaxy[g].galaxy_ysize; y++)
+                        currentSelectedGame.galaxy[g].sector[x, y].Parent = panel1;
 
             //Add the galaxies to the menu
             AddGalaxies();
@@ -958,7 +991,7 @@ namespace MGU
             int previousgame = currentGame;
 
             currentGame = newIndex;
-            toolBarButton0.Text = games[currentGame].game_name;
+            toolBarButton0.Text = currentSelectedGame.game_name;
             if (nrofgames >= 2)
                 for (int g = 0; g < games[previousgame].nrofgalaxies; g++)
                     for (int x = 0; x < games[previousgame].galaxy[g].galaxy_xsize; x++)
@@ -969,10 +1002,10 @@ namespace MGU
                         }
 
             //This is where we set panel1 as the parent control of all sector objects, so that the OnPaint message of panle1 gets passed on to all sectors.
-            for (int g = 0; g < games[currentGame].nrofgalaxies; g++)
-                for (int x = 0; x < games[currentGame].galaxy[g].galaxy_xsize; x++)
-                    for (int y = 0; y < games[currentGame].galaxy[g].galaxy_ysize; y++)
-                        games[currentGame].galaxy[g].sector[x, y].Parent = panel1;
+            for (int g = 0; g < currentSelectedGame.nrofgalaxies; g++)
+                for (int x = 0; x < currentSelectedGame.galaxy[g].galaxy_xsize; x++)
+                    for (int y = 0; y < currentSelectedGame.galaxy[g].galaxy_ysize; y++)
+                        currentSelectedGame.galaxy[g].sector[x, y].Parent = panel1;
 
             //Add the galaxies to the menu
             AddGalaxies();
@@ -989,21 +1022,21 @@ namespace MGU
             if ((MenuItem)sender == this.mgu)
             {
                 if (displaystyle == 2)
-                    games[currentGame].sectorsize -= 10;
+                    currentSelectedGame.sectorsize -= 10;
                 displaystyle = 0;
                 mgu.Checked = true;
             }
             if ((MenuItem)sender == this.game)
             {
                 if (displaystyle == 2)
-                    games[currentGame].sectorsize -= 10;
+                    currentSelectedGame.sectorsize -= 10;
                 displaystyle = 1;
                 game.Checked = true;
             }
             if ((MenuItem)sender == this.smc)
             {
                 if(displaystyle != 2)
-                    games[currentGame].sectorsize += 10;
+                    currentSelectedGame.sectorsize += 10;
                 displaystyle = 2;
                 smc.Checked = true;
             }
@@ -1019,17 +1052,17 @@ namespace MGU
 
             if ((MenuItem)sender == zoom100)
             {
-                games[currentGame].sectorsize = 100;
+                currentSelectedGame.sectorsize = 100;
                 zoom100.Checked = true;
             }
             if ((MenuItem)sender == zoom75)
             {
-                games[currentGame].sectorsize = 75;
+                currentSelectedGame.sectorsize = 75;
                 zoom75.Checked = true;
             }
             if ((MenuItem)sender == zoom50)
             {
-                games[currentGame].sectorsize = 50;
+                currentSelectedGame.sectorsize = 50;
                 zoom50.Checked = true;
             }
 
@@ -1173,10 +1206,10 @@ namespace MGU
             if (userResponse == DialogResult.Yes)
                 SaveMap(sender, e);
 
-            if (games[currentGame].saving)
+            if (currentSelectedGame.saving)
                 MessageBox.Show("Waiting for map to be saved");
 
-            while (games[currentGame].saving) ;
+            while (currentSelectedGame.saving) ;
 
             ClearGame();
 
@@ -1222,7 +1255,7 @@ namespace MGU
 			if (!saveMap.FileName.EndsWith(".smr"))
 				saveMap.FileName += ".smr";
 			string except = "";
-            if (SMR16.SaveData(saveMap.FileName, games[currentGame])) return;
+            if (SMR16.SaveData(saveMap.FileName, currentSelectedGame)) return;
 			if (except != "")
 				MessageBox.Show("Unable to save to " + saveMap.FileName + ": " + except);
 		}
@@ -1259,32 +1292,44 @@ namespace MGU
 
 		private void CloseProgram(object sender, System.EventArgs e)
 		{
-            FileStream fs;
-
-            //Save settings in temp file
-            string address = Directory.GetCurrentDirectory() + @"\startup.txt";
-
-            SMR16.SaveData(address, games[currentGame]);
-
-            fs = new FileStream(address, FileMode.Create, FileAccess.Write, FileShare.Read);
-
-            StreamWriter writer = new StreamWriter(fs);
-
-            writer.WriteLine("LoadedMap=" + games[currentGame].address);
-            writer.WriteLine("Style=" + displaystyle.ToString());
-            for (int i = 0; i < games[currentGame].allianceMembers.Count; i++)
-                writer.WriteLine("Alliance Member=" + games[currentGame].allianceMembers[i].ToString());
-
-            writer.Close();
-            fs.Close();
-
-			this.Close();
+            Close();
 		}
 
-	
-#endregion
-#region Loading, Saving, Opening and Closing
-		private bool Save(string to, ref string except)
+        private void MainStuff_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            HandleCloseEvent(sender, e);
+        }
+
+        private void HandleCloseEvent(object sender, System.EventArgs e)
+        {
+            //if (Properties.Settings.Default.LoadedMaps != null)
+            //{
+            //    Properties.Settings.Default.LoadedMaps.Clear(); // clear saved maps
+            //}
+            //else
+            //{
+            //    Properties.Settings.Default.LoadedMaps = new System.Collections.Specialized.StringCollection();
+            //}
+
+            Properties.Settings.Default.LoadedMaps.Clear();
+
+            foreach (Game game in games)
+            {
+                Properties.Settings.Default.LoadedMaps.Add(game.address);
+            }
+
+            Properties.Settings.Default.Style = displaystyle.ToString();
+            Properties.Settings.Default.Save();
+
+            Dispose();
+        }
+
+        public ImageList GameIcons { get => this.Cons; }
+        public ImageList LocationIcons { get => this.Locs; }
+
+        #endregion
+        #region Loading, Saving, Opening and Closing
+        private bool Save(string to, ref string except)
 		{
 			try 
 			{
@@ -1319,17 +1364,17 @@ namespace MGU
             contextMenu1 = new ContextMenu();
 
             MenuItem GalaxyItem = new MenuItem();
-            for (int x = 1; x < games[currentGame].nrofgalaxies; x++)
+            for (int x = 1; x < currentSelectedGame.nrofgalaxies; x++)
             {
                 GalaxyItem = new System.Windows.Forms.MenuItem();
                 GalaxyItem.Index = x-1;
-                GalaxyItem.Text = games[currentGame].galaxy[x].galaxy_name;
+                GalaxyItem.Text = currentSelectedGame.galaxy[x].galaxy_name;
                 GalaxyItem.RadioCheck = true;
                 GalaxyItem.Click += new System.EventHandler(this.ChangeGalaxy);
                 contextMenu1.MenuItems.Add(GalaxyItem);
             }
 
-            toolBarButton2.Text = games[currentGame].galaxy[1].galaxy_name;
+            toolBarButton2.Text = currentSelectedGame.galaxy[1].galaxy_name;
             toolBarButton2.Enabled = true;
         }
 
@@ -1341,30 +1386,30 @@ namespace MGU
             if (currentGame == -1)
                 return;
 
-            for (int i = 0; i < games[currentGame].nrofgalaxies; i++)
+            for (int i = 0; i < currentSelectedGame.nrofgalaxies; i++)
             {
-                for (int x = 0; x < games[currentGame].galaxy[i].galaxy_xsize; x++)
-                    for (int y = 0; y < games[currentGame].galaxy[i].galaxy_ysize; y++)
+                for (int x = 0; x < currentSelectedGame.galaxy[i].galaxy_xsize; x++)
+                    for (int y = 0; y < currentSelectedGame.galaxy[i].galaxy_ysize; y++)
                     {
-                        if (games[currentGame].currentGalaxy != i)
-                            games[currentGame].galaxy[i].sector[x, y].Visible = false;
+                        if (currentSelectedGame.currentGalaxy != i)
+                            currentSelectedGame.galaxy[i].sector[x, y].Visible = false;
                         else
                         {
-                            games[currentGame].galaxy[i].sector[x, y].Location = new Point(games[currentGame].galaxy[i].sector[x, y].GetX(games[currentGame].galaxy[i].startsector) * games[currentGame].sectorsize + panel1.AutoScrollPosition.X, games[currentGame].galaxy[i].sector[x, y].GetY(games[currentGame].galaxy[i].startsector) * games[currentGame].sectorsize + panel1.AutoScrollPosition.Y);
-                            games[currentGame].galaxy[i].sector[x, y].Visible = true;
+                            currentSelectedGame.galaxy[i].sector[x, y].Location = new Point(currentSelectedGame.galaxy[i].sector[x, y].GetX(currentSelectedGame.galaxy[i].startsector) * currentSelectedGame.sectorsize + panel1.AutoScrollPosition.X, currentSelectedGame.galaxy[i].sector[x, y].GetY(currentSelectedGame.galaxy[i].startsector) * currentSelectedGame.sectorsize + panel1.AutoScrollPosition.Y);
+                            currentSelectedGame.galaxy[i].sector[x, y].Visible = true;
                         }
                     }
 
-                for (int x = 0; x < games[currentGame].galaxy[i].galaxy_xsize; x++)
-                    for (int y = 0; y < games[currentGame].galaxy[i].galaxy_ysize; y++)
+                for (int x = 0; x < currentSelectedGame.galaxy[i].galaxy_xsize; x++)
+                    for (int y = 0; y < currentSelectedGame.galaxy[i].galaxy_ysize; y++)
                     {
-                        if (games[currentGame].galaxy[i].sector[x, y].Visible)
-                            games[currentGame].galaxy[i].sector[x, y].Invalidate();
+                        if (currentSelectedGame.galaxy[i].sector[x, y].Visible)
+                            currentSelectedGame.galaxy[i].sector[x, y].Invalidate();
                     }
             }
             panel1.ResumeLayout(false);
 
-            if (games[currentGame].nrofgalaxies > 0)
+            if (currentSelectedGame.nrofgalaxies > 0)
             {
                     panel1.Visible = true;
                     return;
@@ -1385,43 +1430,87 @@ namespace MGU
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string filename = openFileDialog1.FileName.ToString();
-                if (File.Exists(Directory.GetCurrentDirectory() + @"\startup.txt"))
+
+                /*
+                string startupPath = Directory.GetCurrentDirectory() + @"\startup.txt";
+
+                using (StreamReader reader = new StreamReader(startupPath))
                 {
-                    FileStream fs = new FileStream(Directory.GetCurrentDirectory() + @"\startup.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
-                    StreamReader reader = new StreamReader(fs);
-                    string nextline = reader.ReadLine();
-                    char[] delim = { '=' };
-                    string[] lineparts = nextline.Split(delim, StringSplitOptions.RemoveEmptyEntries);
-                    if (lineparts[0].StartsWith("LoadedMap") && lineparts[1] == filename)
+                    if (!reader.EndOfStream)
                     {
-                        nextline = reader.ReadLine();
-                        lineparts = nextline.Split(delim, StringSplitOptions.RemoveEmptyEntries);
-                        if (lineparts[0].StartsWith("Style"))
-                            this.displaystyle = Convert.ToInt16(lineparts[1]);
-
-                        nextline = reader.ReadLine();
-                        if (reader.EndOfStream)
-                            return;
-
-                        while (nextline.StartsWith("Alliance Member"))
+                        string nextline = reader.ReadLine();
+                        char[] delim = { '=' };
+                        string[] lineparts = nextline.Split(delim, StringSplitOptions.RemoveEmptyEntries);
+                        if (lineparts[0].StartsWith("LoadedMap") && lineparts[1] == filename)
                         {
+                            nextline = reader.ReadLine();
                             lineparts = nextline.Split(delim, StringSplitOptions.RemoveEmptyEntries);
-                            games[currentGame].allianceMembers.Add(lineparts[1]);
-                            if (!reader.EndOfStream)
-                                nextline = reader.ReadLine();
-                            else
-                                break;
+                            if (lineparts[0].StartsWith("Style"))
+                                this.displaystyle = Convert.ToInt16(lineparts[1]);
+
+                            nextline = reader.ReadLine();
+                            if (reader.EndOfStream)
+                                return;
+
+                            while (nextline.StartsWith("Alliance Member"))
+                            {
+                                lineparts = nextline.Split(delim, StringSplitOptions.RemoveEmptyEntries);
+                                currentSelectedGame.allianceMembers.Add(lineparts[1]);
+                                if (!reader.EndOfStream)
+                                    nextline = reader.ReadLine();
+                                else
+                                    break;
+                            }
                         }
                     }
-
-                    reader.Close();
-                    fs.Close();
                 }
+                */
+
                 if (filename.Trim().ToLower().EndsWith(".smr"))
                 {
                     panel1.SuspendLayout();
                     try
                     {
+                        Game gameToAdd = SMR16.LoadData(this, filename);
+
+                        if (gameToAdd != null)
+                        {
+                            int currentIndex = games.Count;
+
+                            MenuItem GameItem = new System.Windows.Forms.MenuItem();
+                            GameItem.Index = currentIndex;
+                            GameItem.Text = gameToAdd.game_name;
+                            GameItem.RadioCheck = true;
+                            GameItem.Click += new System.EventHandler(this.ChangeGame);
+                            contextMenu0.MenuItems.Add(GameItem);
+
+                            toolBarButton0.Text = gameToAdd.game_name;
+
+                            for (int g = 0; g < gameToAdd.nrofgalaxies; g++)
+                            {
+                                for (int x = 0; x < gameToAdd.galaxy[g].galaxy_xsize; x++)
+                                {
+                                    for (int y = 0; y < gameToAdd.galaxy[g].galaxy_ysize; y++)
+                                    {
+                                        gameToAdd.galaxy[g].sector[x, y].Parent = panel1;
+                                        gameToAdd.galaxy[g].sector[x, y].Visible = false;
+                                    }
+                                }
+                            }
+
+                            currentSelectedGame = gameToAdd;
+
+                            //Add the galaxies to the menu
+                            AddGalaxies();
+                            Redraw();
+
+                            goLeftButton.Enabled = goRightButton.Enabled = goDownButton.Enabled = goUpButton.Enabled = toolBarButton1.Enabled = toolBarButton2.Enabled = toolBarButton3.Enabled = toolBarButton5.Enabled = this.toolBarButton6.Enabled = this.toolBarButton7.Enabled = this.toolBarButton8.Enabled = this.toolBarButton1.Enabled = toolBarButton9.Enabled = toolBarButton10.Enabled = true;
+                            CloseUniverse.Enabled = SaveUniverse.Enabled = true;
+
+                            games.Add(gameToAdd);                            
+                        }
+                           
+                        /*
                         if (SMR16.LoadData(filename, games[nrofgames+1]))
                         {
                             nrofgames++;
@@ -1429,12 +1518,12 @@ namespace MGU
 
                             MenuItem GameItem = new System.Windows.Forms.MenuItem();
                             GameItem.Index = nrofgames - 1;
-                            GameItem.Text = games[currentGame].game_name;
+                            GameItem.Text = currentSelectedGame.game_name;
                             GameItem.RadioCheck = true;
                             GameItem.Click += new System.EventHandler(this.ChangeGame);
                             contextMenu0.MenuItems.Add(GameItem);
 
-                            toolBarButton0.Text = games[currentGame].game_name;
+                            toolBarButton0.Text = currentSelectedGame.game_name;
 
                             if (nrofgames >= 2)
                                 for (int g = 0; g < games[currentGame - 1].nrofgalaxies; g++)
@@ -1446,10 +1535,10 @@ namespace MGU
                                         }
 
                             //This is where we set panel1 as the parent control of all sector objects, so that the OnPaint message of panle1 gets passed on to all sectors.
-                            for (int g = 0; g < games[currentGame].nrofgalaxies; g++)
-                                for (int x = 0; x < games[currentGame].galaxy[g].galaxy_xsize; x++)
-                                    for (int y = 0; y < games[currentGame].galaxy[g].galaxy_ysize; y++)
-                                        games[currentGame].galaxy[g].sector[x, y].Parent = panel1;
+                            for (int g = 0; g < currentSelectedGame.nrofgalaxies; g++)
+                                for (int x = 0; x < currentSelectedGame.galaxy[g].galaxy_xsize; x++)
+                                    for (int y = 0; y < currentSelectedGame.galaxy[g].galaxy_ysize; y++)
+                                        currentSelectedGame.galaxy[g].sector[x, y].Parent = panel1;
 
                             //Add the galaxies to the menu
                             AddGalaxies();
@@ -1464,6 +1553,7 @@ namespace MGU
                             loaded = false;
                             CloseUniverse.Enabled = SaveUniverse.Enabled = false;
                         }
+                        */
                     }
                     catch (Exception Except0r)
                     {
@@ -1481,11 +1571,11 @@ namespace MGU
             contextMenu0.MenuItems.RemoveAt(currentGame-1);
 
             //Remove all sector objects
-            for (int g = 0; g < games[currentGame].nrofgalaxies; g++)
-                for (int x = 0; x < games[currentGame].galaxy[g].galaxy_xsize; x++)
-                    for (int y = 0; y < games[currentGame].galaxy[g].galaxy_ysize; y++)
+            for (int g = 0; g < currentSelectedGame.nrofgalaxies; g++)
+                for (int x = 0; x < currentSelectedGame.galaxy[g].galaxy_xsize; x++)
+                    for (int y = 0; y < currentSelectedGame.galaxy[g].galaxy_ysize; y++)
                     {
-                        games[currentGame].galaxy[g].sector[x, y].Dispose();
+                        currentSelectedGame.galaxy[g].sector[x, y].Dispose();
                     }
 
             toolBarButton2.Text = "";
@@ -1504,22 +1594,22 @@ namespace MGU
                 MessageBox.Show("Sector number could not be read!");
             else
             {
-                galaxynr = games[currentGame].GetGalaxyIndex(sectornr);
+                galaxynr = currentSelectedGame.GetGalaxyIndex(sectornr);
                 if (galaxynr == -1)
                 {
                     MessageBox.Show("Not a valid sector for the currently loaded game!");
                 }
                 else
                 {
-                    games[currentGame].currentGalaxy = galaxynr;
+                    currentSelectedGame.currentGalaxy = galaxynr;
                     //Get number of sectors displayed
-                    int sectorwidth = this.Width / games[currentGame].sectorsize - 1;
-                    int sectorheight = (this.Height - 42) / games[currentGame].sectorsize - 1;
+                    int sectorwidth = this.Width / currentSelectedGame.sectorsize - 1;
+                    int sectorheight = (this.Height - 42) / currentSelectedGame.sectorsize - 1;
 
-                    games[currentGame].galaxy[games[currentGame].currentGalaxy].startsector = sectornr - (int)(0.5 * sectorwidth) - (int)(0.5 * sectorheight) * games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_xsize;
-                    if (games[currentGame].galaxy[games[currentGame].currentGalaxy].startsector < games[currentGame].galaxy[games[currentGame].currentGalaxy].lowestsectorid)
-                        games[currentGame].galaxy[games[currentGame].currentGalaxy].startsector += games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_xsize * games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_ysize;
-                    toolBarButton2.Text = games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_name;
+                    currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].startsector = sectornr - (int)(0.5 * sectorwidth) - (int)(0.5 * sectorheight) * currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_xsize;
+                    if (currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].startsector < currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].lowestsectorid)
+                        currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].startsector += currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_xsize * currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_ysize;
+                    toolBarButton2.Text = currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_name;
 
                     this.panel1.AutoScrollPosition = new Point(0, 0);
                     this.panel1.Invalidate();
@@ -1545,22 +1635,22 @@ namespace MGU
                     MessageBox.Show("Sector number could not be read!");
                 else
                 {
-                    galaxynr = games[currentGame].GetGalaxyIndex(sectornr);
+                    galaxynr = currentSelectedGame.GetGalaxyIndex(sectornr);
                     if (galaxynr == -1)
                     {
                         MessageBox.Show("Not a valid sector for the currently loaded game!");
                     }
                     else
                     {
-                        games[currentGame].currentGalaxy = galaxynr;
+                        currentSelectedGame.currentGalaxy = galaxynr;
                         //Get number of sectors displayed
-                        int sectorwidth = this.Width / games[currentGame].sectorsize - 1;
-                        int sectorheight = (this.Height - 42) / games[currentGame].sectorsize - 1;
+                        int sectorwidth = this.Width / currentSelectedGame.sectorsize - 1;
+                        int sectorheight = (this.Height - 42) / currentSelectedGame.sectorsize - 1;
 
-                        games[currentGame].galaxy[games[currentGame].currentGalaxy].startsector = sectornr - (int)(0.5 * sectorwidth) - (int)(0.5 * sectorheight) * games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_xsize;
-                        if (games[currentGame].galaxy[games[currentGame].currentGalaxy].startsector < games[currentGame].galaxy[games[currentGame].currentGalaxy].lowestsectorid)
-                            games[currentGame].galaxy[games[currentGame].currentGalaxy].startsector += games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_xsize * games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_ysize;
-                        toolBarButton2.Text = games[currentGame].galaxy[games[currentGame].currentGalaxy].galaxy_name;
+                        currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].startsector = sectornr - (int)(0.5 * sectorwidth) - (int)(0.5 * sectorheight) * currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_xsize;
+                        if (currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].startsector < currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].lowestsectorid)
+                            currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].startsector += currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_xsize * currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_ysize;
+                        toolBarButton2.Text = currentSelectedGame.galaxy[currentSelectedGame.currentGalaxy].galaxy_name;
                         Redraw();
                     }
                 }
@@ -1573,5 +1663,7 @@ namespace MGU
         {
 
         }
-	}
+
+        
+    }
 }

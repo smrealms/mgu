@@ -2,6 +2,8 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections;
+using System.Configuration;
+using System.ComponentModel;
 
 /// <summary>
 /// Summary description for Class1
@@ -53,6 +55,8 @@ namespace MGU
 
 	//displayIllegals indicates whether illegal goods should be displayed in the main viewer
         public bool displayIllegals;
+
+        public Game() { }
 
         public Game(MainStuff host, ImageList Misc, ImageList Locs)
 	//The class' main constructor. It 

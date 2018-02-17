@@ -2,3 +2,7 @@ backup/
 bin/
 obj/
 MGU/UpgradeLog.htm
+.vs/
+MGU/goods/Thumbs.db
+*.db
+*.db
