@@ -1478,7 +1478,7 @@ namespace MGU
         public void ClearGame()
         {
             contextMenu1.MenuItems.Clear();
-            contextMenu0.MenuItems.RemoveAt(currentGame-1);
+            contextMenu0.MenuItems.RemoveAt(currentGame);
 
             //Remove all sector objects
             for (int g = 0; g < games[currentGame].nrofgalaxies; g++)
