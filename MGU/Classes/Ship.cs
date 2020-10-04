@@ -7,6 +7,7 @@ namespace MGU
     public class Ship : Item
     {
         public Race ship_race;
+        public string ship_class;
         public long ship_cost;
         public int ship_speed;
         public int ship_hardpoints;

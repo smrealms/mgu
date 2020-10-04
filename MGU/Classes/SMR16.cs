@@ -262,8 +262,9 @@ namespace MGU
                                 int.TryParse(shipData[2], out currentGame.ship[shipnr].ship_speed);
                                 int.TryParse(shipData[3], out currentGame.ship[shipnr].ship_hardpoints);
                                 int.TryParse(shipData[4], out currentGame.ship[shipnr].ship_power);
+                                currentGame.ship[shipnr].ship_class = shipData[5];
                                 delim = new char[] { '=', ';' };
-                                string[] shipTech = shipData[5].ToString().Split(delim, StringSplitOptions.RemoveEmptyEntries);
+                                string[] shipTech = shipData[6].ToString().Split(delim, StringSplitOptions.RemoveEmptyEntries);
                                 for(int st = 0; st < shipTech.Length; st++)
                                 {
                                     switch(shipTech[st])
@@ -309,7 +310,7 @@ namespace MGU
                                     } 
                                 }
                                 delim = new char[] { '=' };
-                                basicData = shipData[6].ToString().Split(delim, StringSplitOptions.RemoveEmptyEntries);
+                                basicData = shipData[7].ToString().Split(delim, StringSplitOptions.RemoveEmptyEntries);
                                 int.TryParse(basicData[1], out currentGame.ship[shipnr].ship_restrictions);
                                 shipnr++;
 
@@ -843,7 +844,7 @@ namespace MGU
 
             //Done with technology, on to ships
             data.WriteLine("[Ships]");
-            data.WriteLine("; Name = Race,Cost,TPH,Hardpoints,Power,+Equipment (Optional),+Restrictions(Optional)");
+            data.WriteLine("; Name = Race,Cost,TPH,Hardpoints,Power,Class,+Equipment (Optional),+Restrictions(Optional)");
             data.WriteLine("; Restrictions:Align(Integer)");
 
             for(int s = 0; s < currentGame.nrofships; s++)
@@ -860,6 +861,7 @@ namespace MGU
                                                                   currentGame.ship[s].ship_speed.ToString() + "," +
                                                                   currentGame.ship[s].ship_hardpoints.ToString() + "," +
                                                                   currentGame.ship[s].ship_power.ToString() + "," +
+                                                                  currentGame.ship[s].ship_class + "," +
                                                                   "ShipEquipment=Shields=" + currentGame.ship[s].ship_shields.ToString() + ";" +
                                                                   "Armor=" + currentGame.ship[s].ship_armor.ToString() + ";" +
                                                                   "Cargo Holds=" + currentGame.ship[s].ship_cargo.ToString() + ";" +
