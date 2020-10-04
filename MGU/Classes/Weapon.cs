@@ -14,9 +14,7 @@ namespace MGU
         public int armor_damage;
         public int accuracy;
         public int power;
-        public int emp;
         public int alignment;
-        public int attack_type;
 
         public Weapon()
         {
@@ -26,9 +24,7 @@ namespace MGU
             armor_damage = 0;
             accuracy = 0;
             power = 0;
-            emp = 0;
             alignment = 0;
-            attack_type = 0;
         }
     }
 }

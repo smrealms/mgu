@@ -805,7 +805,7 @@ namespace MGU
             StreamWriter data = new StreamWriter(fs);
             StreamWriter additionaldata = new StreamWriter(fsa);
 
-            data.WriteLine(";SMR1.6 Sectors File v 1.02");
+            data.WriteLine(";SMR1.6 Sectors File v 1.07");
 
             //First we write the races to file
             data.WriteLine("[Races]");
@@ -822,8 +822,8 @@ namespace MGU
 
             //Done with goods, now we write the weapons
             data.WriteLine("[Weapons]");
-            data.WriteLine("; Weapon = Race,Cost,Shield,Armour,Accuracy,Power level,EMP (%),Align Restriction,Attack Restriction");
-            data.WriteLine("; Align: 0=none, 1=good, 2=evil");
+            data.WriteLine("; Weapon = Race,Cost,Shield,Armour,Accuracy,Power level,Restriction");
+            data.WriteLine("; Restriction: 0=none, 1=good, 2=evil");
             data.WriteLine("; Attack: 0=none, 1=raid");
             for(int w = 1; w <= currentGame.nrofweapons; w++)
                 data.WriteLine(currentGame.weapon[w].name + "=" + currentGame.weapon[w].weapon_race.race_name + "," +
@@ -832,9 +832,7 @@ namespace MGU
                                                                   currentGame.weapon[w].armor_damage.ToString() + "," +
                                                                   currentGame.weapon[w].accuracy.ToString() + "," +
                                                                   currentGame.weapon[w].power.ToString() + "," +
-                                                                  currentGame.weapon[w].emp.ToString() + "," +
-                                                                  currentGame.weapon[w].alignment.ToString() + "," +
-                                                                  currentGame.weapon[w].attack_type.ToString());
+                                                                  currentGame.weapon[w].alignment.ToString());
 
             //Done with weapons, now technology
             data.WriteLine("[ShipEquipment]");

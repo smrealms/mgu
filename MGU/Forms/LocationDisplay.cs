@@ -1117,8 +1117,6 @@ namespace MGU
                 writer.WriteLine("weapon[" + i.ToString() + "].power = " + currentGame.weapon[i].power.ToString() + ";");
                 writer.WriteLine("weapon[" + i.ToString() + "].shield_damage = " + currentGame.weapon[i].shield_damage.ToString() + ";");
                 writer.WriteLine("weapon[" + i.ToString() + "].race = GetRaceObject(" + currentGame.weapon[i].weapon_race.GetRaceNameAsId(currentGame).ToString() + ");");
-                writer.WriteLine("weapon[" + i.ToString() + "].emp = " + currentGame.weapon[i].emp.ToString() + ";");
-                writer.WriteLine("weapon[" + i.ToString() + "].attack_type = " + currentGame.weapon[i].attack_type.ToString() + ";");
                 writer.WriteLine("weapon[" + i.ToString() + "].sold_at = \"\"" + ";");
                 writer.WriteLine("");
             }

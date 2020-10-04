@@ -179,8 +179,6 @@ namespace MGU
                 weapon[1].power = 3;
                 weapon[1].shield_damage = 40;
                 weapon[1].weapon_race = GetRaceObject(1);
-                weapon[1].emp = 0;
-                weapon[1].attack_type = 0;
                 weapon[1].sold_at = "";
 
                 weapon[2].accuracy = 35;
@@ -191,8 +189,6 @@ namespace MGU
                 weapon[2].power = 5;
                 weapon[2].shield_damage = 0;
                 weapon[2].weapon_race = GetRaceObject(1);
-                weapon[2].emp = 0;
-                weapon[2].attack_type = 0;
                 weapon[2].sold_at = "";
 
                 weapon[3].accuracy = 35;
@@ -203,8 +199,6 @@ namespace MGU
                 weapon[3].power = 5;
                 weapon[3].shield_damage = 300;
                 weapon[3].weapon_race = GetRaceObject(1);
-                weapon[3].emp = 0;
-                weapon[3].attack_type = 0;
                 weapon[3].sold_at = "";
 
                 weapon[4].accuracy = 54;
@@ -215,8 +209,6 @@ namespace MGU
                 weapon[4].power = 1;
                 weapon[4].shield_damage = 0;
                 weapon[4].weapon_race = GetRaceObject(7);
-                weapon[4].emp = 0;
-                weapon[4].attack_type = 0;
                 weapon[4].sold_at = "";
 
                 weapon[5].accuracy = 51;
@@ -227,8 +219,6 @@ namespace MGU
                 weapon[5].power = 3;
                 weapon[5].shield_damage = 20;
                 weapon[5].weapon_race = GetRaceObject(7);
-                weapon[5].emp = 0;
-                weapon[5].attack_type = 0;
                 weapon[5].sold_at = "";
 
                 weapon[6].accuracy = 54;
@@ -239,8 +229,6 @@ namespace MGU
                 weapon[6].power = 2;
                 weapon[6].shield_damage = 40;
                 weapon[6].weapon_race = GetRaceObject(7);
-                weapon[6].emp = 0;
-                weapon[6].attack_type = 0;
                 weapon[6].sold_at = "";
 
                 weapon[7].accuracy = 48;
@@ -251,8 +239,6 @@ namespace MGU
                 weapon[7].power = 4;
                 weapon[7].shield_damage = 175;
                 weapon[7].weapon_race = GetRaceObject(7);
-                weapon[7].emp = 0;
-                weapon[7].attack_type = 0;
                 weapon[7].sold_at = "";
 
                 weapon[8].accuracy = 58;
@@ -263,8 +249,6 @@ namespace MGU
                 weapon[8].power = 2;
                 weapon[8].shield_damage = 75;
                 weapon[8].weapon_race = GetRaceObject(6);
-                weapon[8].emp = 0;
-                weapon[8].attack_type = 0;
                 weapon[8].sold_at = "";
 
                 weapon[9].accuracy = 44;
@@ -275,8 +259,6 @@ namespace MGU
                 weapon[9].power = 3;
                 weapon[9].shield_damage = 100;
                 weapon[9].weapon_race = GetRaceObject(6);
-                weapon[9].emp = 0;
-                weapon[9].attack_type = 0;
                 weapon[9].sold_at = "";
 
                 weapon[10].accuracy = 54;
@@ -287,8 +269,6 @@ namespace MGU
                 weapon[10].power = 2;
                 weapon[10].shield_damage = 0;
                 weapon[10].weapon_race = GetRaceObject(6);
-                weapon[10].emp = 0;
-                weapon[10].attack_type = 0;
                 weapon[10].sold_at = "";
 
                 weapon[11].accuracy = 54;
@@ -299,8 +279,6 @@ namespace MGU
                 weapon[11].power = 3;
                 weapon[11].shield_damage = 70;
                 weapon[11].weapon_race = GetRaceObject(6);
-                weapon[11].emp = 0;
-                weapon[11].attack_type = 0;
                 weapon[11].sold_at = "";
 
                 weapon[12].accuracy = 54;
@@ -311,8 +289,6 @@ namespace MGU
                 weapon[12].power = 3;
                 weapon[12].shield_damage = 50;
                 weapon[12].weapon_race = GetRaceObject(5);
-                weapon[12].emp = 0;
-                weapon[12].attack_type = 0;
                 weapon[12].sold_at = "";
 
                 weapon[13].accuracy = 58;
@@ -323,8 +299,6 @@ namespace MGU
                 weapon[13].power = 1;
                 weapon[13].shield_damage = 0;
                 weapon[13].weapon_race = GetRaceObject(5);
-                weapon[13].emp = 0;
-                weapon[13].attack_type = 0;
                 weapon[13].sold_at = "";
 
                 weapon[14].accuracy = 51;
@@ -335,8 +309,6 @@ namespace MGU
                 weapon[14].power = 2;
                 weapon[14].shield_damage = 0;
                 weapon[14].weapon_race = GetRaceObject(5);
-                weapon[14].emp = 0;
-                weapon[14].attack_type = 0;
                 weapon[14].sold_at = "";
 
                 weapon[15].accuracy = 62;
@@ -347,8 +319,6 @@ namespace MGU
                 weapon[15].power = 2;
                 weapon[15].shield_damage = 50;
                 weapon[15].weapon_race = GetRaceObject(5);
-                weapon[15].emp = 0;
-                weapon[15].attack_type = 0;
                 weapon[15].sold_at = "";
 
                 weapon[16].accuracy = 78;
@@ -359,8 +329,6 @@ namespace MGU
                 weapon[16].power = 2;
                 weapon[16].shield_damage = 0;
                 weapon[16].weapon_race = GetRaceObject(8);
-                weapon[16].emp = 0;
-                weapon[16].attack_type = 0;
                 weapon[16].sold_at = "";
 
                 weapon[17].accuracy = 38;
@@ -371,8 +339,6 @@ namespace MGU
                 weapon[17].power = 4;
                 weapon[17].shield_damage = 200;
                 weapon[17].weapon_race = GetRaceObject(8);
-                weapon[17].emp = 0;
-                weapon[17].attack_type = 0;
                 weapon[17].sold_at = "";
 
                 weapon[18].accuracy = 80;
@@ -383,8 +349,6 @@ namespace MGU
                 weapon[18].power = 4;
                 weapon[18].shield_damage = 100;
                 weapon[18].weapon_race = GetRaceObject(4);
-                weapon[18].emp = 0;
-                weapon[18].attack_type = 0;
                 weapon[18].sold_at = "";
 
                 weapon[19].accuracy = 82;
@@ -395,8 +359,6 @@ namespace MGU
                 weapon[19].power = 2;
                 weapon[19].shield_damage = 0;
                 weapon[19].weapon_race = GetRaceObject(4);
-                weapon[19].emp = 0;
-                weapon[19].attack_type = 0;
                 weapon[19].sold_at = "";
 
                 weapon[20].accuracy = 54;
@@ -407,8 +369,6 @@ namespace MGU
                 weapon[20].power = 3;
                 weapon[20].shield_damage = 60;
                 weapon[20].weapon_race = GetRaceObject(8);
-                weapon[20].emp = 0;
-                weapon[20].attack_type = 0;
                 weapon[20].sold_at = "";
 
                 weapon[21].accuracy = 54;
@@ -419,8 +379,6 @@ namespace MGU
                 weapon[21].power = 3;
                 weapon[21].shield_damage = 40;
                 weapon[21].weapon_race = GetRaceObject(4);
-                weapon[21].emp = 0;
-                weapon[21].attack_type = 0;
                 weapon[21].sold_at = "";
 
                 weapon[22].accuracy = 44;
@@ -431,8 +389,6 @@ namespace MGU
                 weapon[22].power = 3;
                 weapon[22].shield_damage = 0;
                 weapon[22].weapon_race = GetRaceObject(1);
-                weapon[22].emp = 0;
-                weapon[22].attack_type = 0;
                 weapon[22].sold_at = "";
 
                 weapon[23].accuracy = 48;
@@ -443,8 +399,6 @@ namespace MGU
                 weapon[23].power = 3;
                 weapon[23].shield_damage = 0;
                 weapon[23].weapon_race = GetRaceObject(4);
-                weapon[23].emp = 0;
-                weapon[23].attack_type = 0;
                 weapon[23].sold_at = "";
 
                 weapon[24].accuracy = 72;
@@ -455,8 +409,6 @@ namespace MGU
                 weapon[24].power = 2;
                 weapon[24].shield_damage = 30;
                 weapon[24].weapon_race = GetRaceObject(3);
-                weapon[24].emp = 0;
-                weapon[24].attack_type = 0;
                 weapon[24].sold_at = "";
 
                 weapon[25].accuracy = 74;
@@ -467,8 +419,6 @@ namespace MGU
                 weapon[25].power = 4;
                 weapon[25].shield_damage = 0;
                 weapon[25].weapon_race = GetRaceObject(1);
-                weapon[25].emp = 0;
-                weapon[25].attack_type = 0;
                 weapon[25].sold_at = "";
 
                 weapon[26].accuracy = 68;
@@ -479,8 +429,6 @@ namespace MGU
                 weapon[26].power = 3;
                 weapon[26].shield_damage = 0;
                 weapon[26].weapon_race = GetRaceObject(3);
-                weapon[26].emp = 0;
-                weapon[26].attack_type = 0;
                 weapon[26].sold_at = "";
 
                 weapon[27].accuracy = 68;
@@ -491,8 +439,6 @@ namespace MGU
                 weapon[27].power = 3;
                 weapon[27].shield_damage = 85;
                 weapon[27].weapon_race = GetRaceObject(3);
-                weapon[27].emp = 0;
-                weapon[27].attack_type = 0;
                 weapon[27].sold_at = "";
 
                 weapon[28].accuracy = 80;
@@ -503,8 +449,6 @@ namespace MGU
                 weapon[28].power = 4;
                 weapon[28].shield_damage = 50;
                 weapon[28].weapon_race = GetRaceObject(2);
-                weapon[28].emp = 0;
-                weapon[28].attack_type = 0;
                 weapon[28].sold_at = "";
 
                 weapon[29].accuracy = 54;
@@ -515,8 +459,6 @@ namespace MGU
                 weapon[29].power = 2;
                 weapon[29].shield_damage = 25;
                 weapon[29].weapon_race = GetRaceObject(2);
-                weapon[29].emp = 0;
-                weapon[29].attack_type = 0;
                 weapon[29].sold_at = "";
 
                 weapon[30].accuracy = 62;
@@ -527,8 +469,6 @@ namespace MGU
                 weapon[30].power = 3;
                 weapon[30].shield_damage = 0;
                 weapon[30].weapon_race = GetRaceObject(2);
-                weapon[30].emp = 0;
-                weapon[30].attack_type = 0;
                 weapon[30].sold_at = "";
 
                 weapon[31].accuracy = 62;
@@ -539,8 +479,6 @@ namespace MGU
                 weapon[31].power = 2;
                 weapon[31].shield_damage = 65;
                 weapon[31].weapon_race = GetRaceObject(2);
-                weapon[31].emp = 0;
-                weapon[31].attack_type = 0;
                 weapon[31].sold_at = "";
 
                 weapon[32].accuracy = 72;
@@ -551,8 +489,6 @@ namespace MGU
                 weapon[32].power = 2;
                 weapon[32].shield_damage = 0;
                 weapon[32].weapon_race = GetRaceObject(1);
-                weapon[32].emp = 0;
-                weapon[32].attack_type = 0;
                 weapon[32].sold_at = "";
 
                 weapon[33].accuracy = 58;
@@ -563,8 +499,6 @@ namespace MGU
                 weapon[33].power = 1;
                 weapon[33].shield_damage = 0;
                 weapon[33].weapon_race = GetRaceObject(1);
-                weapon[33].emp = 0;
-                weapon[33].attack_type = 0;
                 weapon[33].sold_at = "";
 
                 weapon[34].accuracy = 48;
@@ -575,8 +509,6 @@ namespace MGU
                 weapon[34].power = 1;
                 weapon[34].shield_damage = 0;
                 weapon[34].weapon_race = GetRaceObject(1);
-                weapon[34].emp = 0;
-                weapon[34].attack_type = 0;
                 weapon[34].sold_at = "";
 
                 weapon[35].accuracy = 51;
@@ -587,8 +519,6 @@ namespace MGU
                 weapon[35].power = 4;
                 weapon[35].shield_damage = 85;
                 weapon[35].weapon_race = GetRaceObject(1);
-                weapon[35].emp = 0;
-                weapon[35].attack_type = 0;
                 weapon[35].sold_at = "";
 
                 weapon[36].accuracy = 58;
@@ -599,8 +529,6 @@ namespace MGU
                 weapon[36].power = 3;
                 weapon[36].shield_damage = 60;
                 weapon[36].weapon_race = GetRaceObject(1);
-                weapon[36].emp = 0;
-                weapon[36].attack_type = 0;
                 weapon[36].sold_at = "";
 
                 weapon[37].accuracy = 65;
@@ -611,8 +539,6 @@ namespace MGU
                 weapon[37].power = 3;
                 weapon[37].shield_damage = 40;
                 weapon[37].weapon_race = GetRaceObject(1);
-                weapon[37].emp = 0;
-                weapon[37].attack_type = 0;
                 weapon[37].sold_at = "";
 
                 weapon[38].accuracy = 58;
@@ -623,8 +549,6 @@ namespace MGU
                 weapon[38].power = 2;
                 weapon[38].shield_damage = 0;
                 weapon[38].weapon_race = GetRaceObject(1);
-                weapon[38].emp = 0;
-                weapon[38].attack_type = 0;
                 weapon[38].sold_at = "";
 
                 weapon[39].accuracy = 65;
@@ -635,8 +559,6 @@ namespace MGU
                 weapon[39].power = 2;
                 weapon[39].shield_damage = 0;
                 weapon[39].weapon_race = GetRaceObject(1);
-                weapon[39].emp = 0;
-                weapon[39].attack_type = 0;
                 weapon[39].sold_at = "";
 
                 weapon[40].accuracy = 68;
@@ -647,8 +569,6 @@ namespace MGU
                 weapon[40].power = 1;
                 weapon[40].shield_damage = 0;
                 weapon[40].weapon_race = GetRaceObject(1);
-                weapon[40].emp = 0;
-                weapon[40].attack_type = 0;
                 weapon[40].sold_at = "";
 
                 weapon[41].accuracy = 72;
@@ -659,8 +579,6 @@ namespace MGU
                 weapon[41].power = 1;
                 weapon[41].shield_damage = 0;
                 weapon[41].weapon_race = GetRaceObject(1);
-                weapon[41].emp = 0;
-                weapon[41].attack_type = 0;
                 weapon[41].sold_at = "";
 
                 weapon[42].accuracy = 64;
@@ -671,8 +589,6 @@ namespace MGU
                 weapon[42].power = 2;
                 weapon[42].shield_damage = 60;
                 weapon[42].weapon_race = GetRaceObject(1);
-                weapon[42].emp = 0;
-                weapon[42].attack_type = 0;
                 weapon[42].sold_at = "";
 
                 weapon[43].accuracy = 68;
@@ -683,8 +599,6 @@ namespace MGU
                 weapon[43].power = 1;
                 weapon[43].shield_damage = 30;
                 weapon[43].weapon_race = GetRaceObject(1);
-                weapon[43].emp = 0;
-                weapon[43].attack_type = 0;
                 weapon[43].sold_at = "";
 
                 weapon[44].accuracy = 54;
@@ -695,8 +609,6 @@ namespace MGU
                 weapon[44].power = 3;
                 weapon[44].shield_damage = 60;
                 weapon[44].weapon_race = GetRaceObject(1);
-                weapon[44].emp = 0;
-                weapon[44].attack_type = 0;
                 weapon[44].sold_at = "";
 
                 weapon[45].accuracy = 62;
@@ -707,8 +619,6 @@ namespace MGU
                 weapon[45].power = 2;
                 weapon[45].shield_damage = 40;
                 weapon[45].weapon_race = GetRaceObject(1);
-                weapon[45].emp = 0;
-                weapon[45].attack_type = 0;
                 weapon[45].sold_at = "";
 
                 weapon[46].accuracy = 68;
@@ -719,8 +629,6 @@ namespace MGU
                 weapon[46].power = 2;
                 weapon[46].shield_damage = 25;
                 weapon[46].weapon_race = GetRaceObject(1);
-                weapon[46].emp = 0;
-                weapon[46].attack_type = 0;
                 weapon[46].sold_at = "";
 
                 weapon[47].accuracy = 72;
@@ -731,8 +639,6 @@ namespace MGU
                 weapon[47].power = 1;
                 weapon[47].shield_damage = 10;
                 weapon[47].weapon_race = GetRaceObject(1);
-                weapon[47].emp = 0;
-                weapon[47].attack_type = 0;
                 weapon[47].sold_at = "";
 
                 weapon[48].accuracy = 34;
@@ -743,8 +649,6 @@ namespace MGU
                 weapon[48].power = 4;
                 weapon[48].shield_damage = 0;
                 weapon[48].weapon_race = GetRaceObject(3);
-                weapon[48].emp = 0;
-                weapon[48].attack_type = 0;
                 weapon[48].sold_at = "";
 
                 weapon[49].accuracy = 40;
@@ -755,8 +659,6 @@ namespace MGU
                 weapon[49].power = 4;
                 weapon[49].shield_damage = 0;
                 weapon[49].weapon_race = GetRaceObject(1);
-                weapon[49].emp = 0;
-                weapon[49].attack_type = 0;
                 weapon[49].sold_at = "";
 
                 weapon[50].accuracy = 40;
@@ -767,8 +669,6 @@ namespace MGU
                 weapon[50].power = 2;
                 weapon[50].shield_damage = 0;
                 weapon[50].weapon_race = GetRaceObject(1);
-                weapon[50].emp = 0;
-                weapon[50].attack_type = 0;
                 weapon[50].sold_at = "";
 
                 weapon[51].accuracy = 58;
@@ -779,8 +679,6 @@ namespace MGU
                 weapon[51].power = 1;
                 weapon[51].shield_damage = 35;
                 weapon[51].weapon_race = GetRaceObject(9);
-                weapon[51].emp = 0;
-                weapon[51].attack_type = 0;
                 weapon[51].sold_at = "";
 
                 weapon[52].accuracy = 50;
@@ -791,8 +689,6 @@ namespace MGU
                 weapon[52].power = 2;
                 weapon[52].shield_damage = 80;
                 weapon[52].weapon_race = GetRaceObject(9);
-                weapon[52].emp = 0;
-                weapon[52].attack_type = 0;
                 weapon[52].sold_at = "";
 
                 weapon[53].accuracy = 44;
@@ -803,8 +699,6 @@ namespace MGU
                 weapon[53].power = 3;
                 weapon[53].shield_damage = 130;
                 weapon[53].weapon_race = GetRaceObject(9);
-                weapon[53].emp = 0;
-                weapon[53].attack_type = 0;
                 weapon[53].sold_at = "";
 
                 weapon[54].accuracy = 51;
@@ -815,8 +709,6 @@ namespace MGU
                 weapon[54].power = 4;
                 weapon[54].shield_damage = 0;
                 weapon[54].weapon_race = GetRaceObject(9);
-                weapon[54].emp = 0;
-                weapon[54].attack_type = 0;
                 weapon[54].sold_at = "";
 
                 weapon[55].accuracy = 34;
@@ -827,8 +719,6 @@ namespace MGU
                 weapon[55].power = 5;
                 weapon[55].shield_damage = 150;
                 weapon[55].weapon_race = GetRaceObject(1);
-                weapon[55].emp = 0;
-                weapon[55].attack_type = 0;
                 weapon[55].sold_at = "";
 
                 weapon[56].accuracy = 66;
@@ -839,8 +729,6 @@ namespace MGU
                 weapon[56].power = 0;
                 weapon[56].shield_damage = 666;
                 weapon[56].weapon_race = GetRaceObject(1);
-                weapon[56].emp = 0;
-                weapon[56].attack_type = 0;
                 weapon[56].sold_at = "";
 
                 weapon[57].accuracy = 10;
@@ -851,8 +739,6 @@ namespace MGU
                 weapon[57].power = 0;
                 weapon[57].shield_damage = 250;
                 weapon[57].weapon_race = GetRaceObject(1);
-                weapon[57].emp = 0;
-                weapon[57].attack_type = 0;
                 weapon[57].sold_at = "";
 
                 weapon[57].accuracy = 25;
@@ -863,8 +749,6 @@ namespace MGU
                 weapon[57].power = 0;
                 weapon[57].shield_damage = 250;
                 weapon[57].weapon_race = GetRaceObject(1);
-                weapon[57].emp = 0;
-                weapon[57].attack_type = 0;
                 weapon[57].sold_at = "";
             }
             #endregion
