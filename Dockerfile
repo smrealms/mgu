@@ -5,4 +5,5 @@ WORKDIR MGU
 
 RUN mono --version
 RUN msbuild MGU.sln
-RUN mono MGU.exe
+
+CMD ["mono", "/MGU/bin/MGU.exe"]

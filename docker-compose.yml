@@ -4,3 +4,6 @@ services:
     mgu:
         build:
             context: .
+        command: cp /MGU/bin/MGU.exe /bin-host/MGU.exe
+        volumes:
+            - ./bin:/bin-host:rw
