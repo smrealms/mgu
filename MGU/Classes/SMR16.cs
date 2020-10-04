@@ -187,9 +187,7 @@ namespace MGU
                                 int.TryParse(weaponData[4], out currentGame.weapon[weaponnr].armor_damage);
                                 int.TryParse(weaponData[5], out currentGame.weapon[weaponnr].accuracy);
                                 int.TryParse(weaponData[6], out currentGame.weapon[weaponnr].power);
-                                int.TryParse(weaponData[7], out currentGame.weapon[weaponnr].emp);
-                                int.TryParse(weaponData[8], out currentGame.weapon[weaponnr].alignment);
-                                int.TryParse(weaponData[9], out currentGame.weapon[weaponnr].attack_type);
+                                int.TryParse(weaponData[7], out currentGame.weapon[weaponnr].alignment);
                                 weaponnr++;
                             }
                         }
