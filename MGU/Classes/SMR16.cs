@@ -805,7 +805,7 @@ namespace MGU
             StreamWriter data = new StreamWriter(fs);
             StreamWriter additionaldata = new StreamWriter(fsa);
 
-            data.WriteLine(";SMR1.6 Sectors File v 1.07");
+            data.WriteLine(";SMR1.6 Sectors File v1.07 (modified by MGU)");
 
             //First we write the races to file
             data.WriteLine("[Races]");
