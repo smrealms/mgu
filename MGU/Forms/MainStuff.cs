@@ -55,13 +55,13 @@ namespace MGU
         private bool loaded = false;
 
         #region Version Info
-		public const string version = "v1.6.1.8";
+        public const string version = "v1.6.2.0";
         private ToolBarButton Sep9;
         private ToolBarButton toolBarButton10;
         public ToolBarButton toolBarButton0;
         private ToolBarButton Sep0;
         private ContextMenu contextMenu0;
-		public const string AssemblyVersion = "1.6.1.8";
+        public const string AssemblyVersion = "1.6.2.0";
         #endregion
 
 		[STAThread]
