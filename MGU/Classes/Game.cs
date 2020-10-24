@@ -85,7 +85,7 @@ namespace MGU
             race = new Race[nrofraces+1];
             peace = new bool[nrofraces + 1];
 
-            for (int i = 0; i < nrofraces + 1; i++)
+            for (int i = 1; i < nrofraces + 1; i++)
             {
                 race[i] = new Race();
                 peace[i] = false;
