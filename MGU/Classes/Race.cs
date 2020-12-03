@@ -27,7 +27,7 @@ namespace MGU
         public ushort GetRaceNameAsId(Game currentGame)
 	//This function returns the index of a race within a given game
         {
-            for (int i = 0; i <= currentGame.nrofraces; i++)
+            for (int i = 1; i <= currentGame.nrofraces; i++)
                 if (currentGame.race[i].race_name == this.race_name)
                     return (ushort) i;
             
