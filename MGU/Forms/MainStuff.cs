@@ -55,7 +55,7 @@ namespace MGU
         private bool loaded = false;
 
         #region Version Info
-        public const string AssemblyVersion = "1.6.2.0";
+        public const string AssemblyVersion = "1.6.2.1";
         public const string version = "v" + AssemblyVersion;
         private ToolBarButton Sep9;
         private ToolBarButton toolBarButton10;
