@@ -55,13 +55,13 @@ namespace MGU
         private bool loaded = false;
 
         #region Version Info
-        public const string version = "v1.6.2.0";
+        public const string AssemblyVersion = "1.6.2.0";
+        public const string version = "v" + AssemblyVersion;
         private ToolBarButton Sep9;
         private ToolBarButton toolBarButton10;
         public ToolBarButton toolBarButton0;
         private ToolBarButton Sep0;
         private ContextMenu contextMenu0;
-        public const string AssemblyVersion = "1.6.2.0";
         #endregion
 
 		[STAThread]
@@ -826,7 +826,7 @@ namespace MGU
             this.Menu = this.mainMenu1;
             this.MinimumSize = new System.Drawing.Size(784, 86);
             this.Name = "MainStuff";
-            this.Text = "Merchants Guide to the Universe Version 1.6.1.8";
+            this.Text = "Merchants Guide to the Universe " + version;
             this.Load += new System.EventHandler(this.MainStuff_Load);
             this.SizeChanged += new System.EventHandler(this.DoResize);
             this.panel1.ResumeLayout(false);
