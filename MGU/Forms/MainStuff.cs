@@ -82,9 +82,9 @@ namespace MGU
                 games[x] = new Game(this, Cons, Locs);
 
             //Load the startup file if it exists
-            if (File.Exists(Directory.GetCurrentDirectory() + @"\startup.txt"))
+            if (File.Exists(@"startup.txt"))
             {
-                FileStream fs = new FileStream(Directory.GetCurrentDirectory() + @"\startup.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
+                FileStream fs = new FileStream(@"startup.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
                 StreamReader reader = new StreamReader(fs);
                 nextline = reader.ReadLine();
                 char[] delim = { '=' };
@@ -220,7 +220,7 @@ namespace MGU
 		protected override void Dispose( bool disposing )
 		{
             FileStream fs;
-            string address = Directory.GetCurrentDirectory() + @"\startup.txt";
+            string address = @"startup.txt";
 
             try
             {
@@ -1262,7 +1262,7 @@ namespace MGU
             FileStream fs;
 
             //Save settings in temp file
-            string address = Directory.GetCurrentDirectory() + @"\startup.txt";
+            string address = @"startup.txt";
 
             SMR16.SaveData(address, games[currentGame]);
 
@@ -1385,9 +1385,9 @@ namespace MGU
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string filename = openFileDialog1.FileName.ToString();
-                if (File.Exists(Directory.GetCurrentDirectory() + @"\startup.txt"))
+                if (File.Exists(@"startup.txt"))
                 {
-                    FileStream fs = new FileStream(Directory.GetCurrentDirectory() + @"\startup.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
+                    FileStream fs = new FileStream(@"startup.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
                     StreamReader reader = new StreamReader(fs);
                     string nextline = reader.ReadLine();
                     char[] delim = { '=' };
