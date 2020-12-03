@@ -31,7 +31,7 @@ namespace MGU
             }
             TextReader data = new StreamReader(fs);
 
-            string SMRAdditional = Path.GetDirectoryName(SMRFile) + @"\" + Path.GetFileNameWithoutExtension(SMRFile) + ".sma";
+            string SMRAdditional = Path.Combine(Path.GetDirectoryName(SMRFile), Path.GetFileNameWithoutExtension(SMRFile) + ".sma");
             if(File.Exists(SMRAdditional))
             {
                 try
@@ -792,7 +792,7 @@ namespace MGU
 
             currentGame.saving = true;
 
-            string SMRAdditional = Path.GetDirectoryName(SMRFile) + @"\" + Path.GetFileNameWithoutExtension(SMRFile) + ".sma";
+            string SMRAdditional = Path.Combine(Path.GetDirectoryName(SMRFile), Path.GetFileNameWithoutExtension(SMRFile) + ".sma");
             try
             {
                 fsa = new FileStream(SMRAdditional, FileMode.Create, FileAccess.Write, FileShare.Read);
