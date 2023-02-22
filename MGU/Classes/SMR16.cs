@@ -68,6 +68,13 @@ namespace MGU
             //Split the entire file into individual lines
             char[] delim = { '\n', '\r' };
             ArrayList lines = new ArrayList(data.ReadToEnd().Split(delim, StringSplitOptions.RemoveEmptyEntries));
+
+            //Trim lines
+            for (int l = 0; l < lines.Count; l++)
+            {
+                lines[l] = lines[l].ToString().Trim();                 
+            }
+
             ForceData forces;
 
             int i, j, nrofcomments = 0;
