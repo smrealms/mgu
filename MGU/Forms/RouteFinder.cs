@@ -220,7 +220,7 @@ namespace MGU
 		protected void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RouteFinder));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MGU.Forms.RouteFinder));
             ToolbarControl.PictureBar.ColorsTemp colorsTemp1 = new ToolbarControl.PictureBar.ColorsTemp();
             ToolbarControl.PictureBar.ColorsTemp colorsTemp2 = new ToolbarControl.PictureBar.ColorsTemp();
             this.CalculateTrigger = new System.Windows.Forms.Button();

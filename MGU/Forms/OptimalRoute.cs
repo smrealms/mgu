@@ -343,7 +343,7 @@ namespace MGU
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OptimalRoute));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MGU.Forms.OptimalRoute));
             this.Begin = new System.Windows.Forms.GroupBox();
             this.StartSectorField = new System.Windows.Forms.TextBox();
             this.result4 = new System.Windows.Forms.TextBox();
