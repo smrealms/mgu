@@ -89,7 +89,7 @@ namespace MGU
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewUniverse));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MGU.Forms.NewUniverse));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.MoveDownButton = new System.Windows.Forms.Button();
             this.MoveUpButton = new System.Windows.Forms.Button();

@@ -371,7 +371,7 @@ namespace MGU
         private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SectorConfig));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MGU.Forms.SectorConfig));
             ToolbarControl.PictureBar.ColorsTemp colorsTemp1 = new ToolbarControl.PictureBar.ColorsTemp();
             ToolbarControl.PictureBar.ColorsTemp colorsTemp2 = new ToolbarControl.PictureBar.ColorsTemp();
             this.westButton = new System.Windows.Forms.Button();
